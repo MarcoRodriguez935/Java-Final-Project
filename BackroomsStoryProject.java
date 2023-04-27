@@ -43,4 +43,20 @@ public class BackroomsStoryProject {
 		System.out.println();
 
 	}
+	
+	public static int getRandomInt() {
+
+		int num = (int)(Math.random() * 7);
+
+		return num;
+	}
+
+	public static String randomRoom(int num) {
+		String[] rooms = {"Level 2", "Level 3", "Level 4", "Level 5", "Level 6", 
+	    				  "Level 7", "Level 8", "Level 9"};
+
+	    String next_room = rooms[num];
+
+	    return next_room;
+	}
 }
