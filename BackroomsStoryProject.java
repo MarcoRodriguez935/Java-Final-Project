@@ -12,7 +12,7 @@ public class BackroomsStoryProject {
 	    }
 
 		introMessage();
-  }
+  	}
 
   public static void displayTitle() {
 	    System.out.println();
@@ -39,7 +39,7 @@ public class BackroomsStoryProject {
 	        "                               ░         ░                                                           ");
 
 	    System.out.println();
-  }
+  	}
 
   public static void introMessage() {
 	    Scanner input = new Scanner(System.in);
@@ -79,7 +79,7 @@ public class BackroomsStoryProject {
 
 	    firstLevel(name, health, inventory, num_of_levels_passed);
 
-  }
+  	}
 
   public static void firstLevel(String name, int health, String[] inventory, 
 		int num_of_levels_passed) {
@@ -91,11 +91,11 @@ public class BackroomsStoryProject {
 	  	num_of_levels_passed++;
 
 
-  }
+  	}
 
   public static void final_level(String name, int health, String[] inventory) {
   		return;
-  }
+  	}
 
   public static String getRandomRoom(String current_level) {
 
@@ -107,7 +107,7 @@ public class BackroomsStoryProject {
 	   	String next_level = levels[random_level];
 
 	    return next_level;
-  }
+  	}
 
   public static void currentStats(String player_name, int health, String[] inventory) {
 
@@ -120,14 +120,14 @@ public class BackroomsStoryProject {
 	  	}
 
 	  	System.out.println();
-  }
+  	}
 
   public static boolean playerIsDead(int health) {
 	  	if (health <= 0) 
 	  		return true;
 	  	else 
 	  		return false;
-  }
+  	}
 
   public static void deathScreen() {
 	  	System.out.println("  ▄████ ▄▄▄      ███▄ ▄███▓█████     ▒█████  ██▒   █▓█████ ██▀███  ");
@@ -140,7 +140,7 @@ public class BackroomsStoryProject {
 	  	System.out.println("░ ░   ░  ░   ▒  ░      ░     ░      ░ ░ ░ ▒      ░░    ░    ░░   ░ ");
 	  	System.out.println("      ░      ░  ░      ░     ░  ░       ░ ░       ░    ░  ░  ░     ");
 	  	System.out.println("                                                 ░                 ");
-  }
+  	}
 
   public static void victoryScreen() {
 	  	System.out.println("██████╗ ██╗      █████╗ ██╗   ██╗███████╗██████╗     ██╗    ██╗██╗███╗   ██╗███████╗");
@@ -150,10 +150,21 @@ public class BackroomsStoryProject {
 	  	System.out.println("██║     ███████╗██║  ██║   ██║   ███████╗██║  ██║    ╚███╔███╔╝██║██║ ╚████║███████║");
 	  	System.out.println("╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝     ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚══════╝");
 	  	System.out.println("                                                                                    ");
-  }
+  	}
 
   public static void runHelpProgram() {
-  	    System.out.println("TEMP");
-  }
+  		System.out.println("\n----------Description----------");
+  	    System.out.println("This game is heavily influenced by the expansive lore of the backrooms." + 
+  	    	"\nIn short, the backrooms is somewhat of an alternate dimension that victims can reach by\n\"noclipping\"" +
+  	    	" out of our reality.\nThe backrooms are characterized by its almost limitless number of random levels."
+  	    	+ "\nThese levels can lead to subequent ones or, if you're unlucky, can take you to undesirable locations.");
+  	    System.out.println("\n----------Instructions----------");
+  	    System.out.println("This game mainly incorporates the randomness of the backrooms. Although the first and last "
+  	    	+ "levels are fixed,\nit is intended to be a random experience through each playthrough.\nIn these levels, you may "
+  	    	+ "encounter items, new locations, or entities. Use your intuition as you play.");
+
+  	    System.out.println("\n----------GAME STARTED----------");
+  	    System.out.println();
+  	}
  
 }
