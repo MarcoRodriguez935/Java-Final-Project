@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class BackroomsStoryProject {
   public static void main(String[] args) {
     introMessage();
-    displayTitle();
 
   }
 
@@ -43,31 +42,104 @@ public class BackroomsStoryProject {
 
     System.out.println();
     System.out.println("Hello " + name + ",");
-    System.out.println("You were having a normal day when you tripped and miraculously noclipped through " +
+    System.out.println("You were having a normal day when you tripped and suddenly noclipped through " +
         "the ground in broad daylight.");
-    System.out.println("You are now in an unknown place.\nYou see nothing ahead but an endless number " +
-        "of seemingly randomly generated rooms.\nThis place does not seem real, yet you stand here in disbelief.");
+    System.out.println("You are now in an unknown place.\nThere is nothing ahead but an endless number " +
+        "of seemingly randomly generated rooms enough to make anyone go insane.\nThis place does not seem real," + 
+        " you stand in disbelief as you cannot comprehend the nature of this mysterious place.");
+    System.out.println("The same questions linger in your thoughts nonstop.");
     System.out.println("Are you alone? Perhaps stuck here forever? Only time can tell.");
-    System.out.println("Still, there's no guarantee time passes normally here.");
-    System.out.println("Welcome to your final resting place.......");
+    System.out.println("Still, there's no guarantee time even exists here");
+    System.out.println("\nWelcome to your final resting place.......");
     System.out.println();
 
+    displayTitle();
+
+    System.out.print("Enter any key to begin: ");
+    char key = input.next().charAt(0);
+
+    System.out.println();
+
+    int health = 100;
+
+    int num_of_levels_passed = 0;
+
+    // Placeholder for inventory
+    String[] inventory = {"empty", "empty", "empty", "empty", "empty", "empty"};
+
+    firstLevel(name, health, inventory, num_of_levels_passed);
+
   }
 
-  public static int getRandomInt() {
+  public static void firstLevel(String name, int health, String[] inventory, 
+		int num_of_levels_passed) {
+  	System.out.println("LEVEL 1\n");
 
-    int num = (int) (Math.random() * 7);
+  	currentStats(name, health, inventory);
 
-    return num;
+  	String current_level = "Level1";
+  	num_of_levels_passed++;
+
+
   }
 
-  public static String randomRoom(int num) {
-
-    String[] rooms = { "Level 2", "Level 3", "Level 4", "Level 5", "Level 6",
-        "Level 7", "Level 8", "Level 9" };
-
-    String next_room = rooms[num];
-
-    return next_room;
+  public static void final_level(String name, int health, String[] inventory) {
+  	return;
   }
+
+  public static String getRandomRoom(String current_level) {
+
+    String[] levels = { "Level2", "Level3", "Level4", "Level5", "Level6",
+        "Level7", "Level8", "Level9" };
+
+    int random_level = (int)(Math.random() * (7+1));
+
+   	String next_level = levels[random_level];
+
+    return next_level;
+  }
+
+  public static void currentStats(String player_name, int health, String[] inventory) {
+
+  	System.out.println("----------" + player_name + "----------");
+  	System.out.println("Health: " + health + "%");
+  	System.out.println("\nInventory: ");
+
+  	for (int i = 0; i < inventory.length; i++) {
+  		System.out.println("\t" + (i+1) + ") " + inventory[i]);
+  	}
+
+  	System.out.println();
+  }
+
+  public static boolean playerIsDead(int health) {
+  	if (health <= 0) 
+  		return true;
+  	else 
+  		return false;
+  }
+
+  public static void deathScreen() {
+  	System.out.println("  ▄████ ▄▄▄      ███▄ ▄███▓█████     ▒█████  ██▒   █▓█████ ██▀███  ");
+  	System.out.println(" ██▒ ▀█▒████▄   ▓██▒▀█▀ ██▓█   ▀    ▒██▒  ██▓██░   █▓█   ▀▓██ ▒ ██▒");
+  	System.out.println("▒██░▄▄▄▒██  ▀█▄ ▓██    ▓██▒███      ▒██░  ██▒▓██  █▒▒███  ▓██ ░▄█ ▒");
+  	System.out.println("░▓█  ██░██▄▄▄▄██▒██    ▒██▒▓█  ▄    ▒██   ██░ ▒██ █░▒▓█  ▄▒██▀▀█▄  ");
+  	System.out.println("░▒▓███▀▒▓█   ▓██▒██▒   ░██░▒████▒   ░ ████▓▒░  ▒▀█░ ░▒████░██▓ ▒██▒");
+  	System.out.println(" ░▒   ▒ ▒▒   ▓▒█░ ▒░   ░  ░░ ▒░ ░   ░ ▒░▒░▒░   ░ ▐░ ░░ ▒░ ░ ▒▓ ░▒▓░");
+  	System.out.println("  ░   ░  ▒   ▒▒ ░  ░      ░░ ░  ░     ░ ▒ ▒░   ░ ░░  ░ ░  ░ ░▒ ░ ▒░");
+  	System.out.println("░ ░   ░  ░   ▒  ░      ░     ░      ░ ░ ░ ▒      ░░    ░    ░░   ░ ");
+  	System.out.println("      ░      ░  ░      ░     ░  ░       ░ ░       ░    ░  ░  ░     ");
+  	System.out.println("                                                 ░                 ");
+  }
+
+  public static void victoryScreen() {
+  	System.out.println("██████╗ ██╗      █████╗ ██╗   ██╗███████╗██████╗     ██╗    ██╗██╗███╗   ██╗███████╗");
+  	System.out.println("██╔══██╗██║     ██╔══██╗╚██╗ ██╔╝██╔════╝██╔══██╗    ██║    ██║██║████╗  ██║██╔════╝");
+  	System.out.println("██████╔╝██║     ███████║ ╚████╔╝ █████╗  ██████╔╝    ██║ █╗ ██║██║██╔██╗ ██║███████╗");
+  	System.out.println("██╔═══╝ ██║     ██╔══██║  ╚██╔╝  ██╔══╝  ██╔══██╗    ██║███╗██║██║██║╚██╗██║╚════██║");
+  	System.out.println("██║     ███████╗██║  ██║   ██║   ███████╗██║  ██║    ╚███╔███╔╝██║██║ ╚████║███████║");
+  	System.out.println("╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝     ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚══════╝");
+  	System.out.println("                                                                                    ");
+  }
+  
 }
