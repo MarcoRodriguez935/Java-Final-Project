@@ -46,7 +46,7 @@ public class BackroomsStoryProject {
         "the ground in broad daylight.");
     System.out.println("You are now in an unknown place.\nThere is nothing ahead but an endless number " +
         "of seemingly randomly generated rooms enough to make anyone go insane.\nThis place does not seem real," + 
-        " you stand in disbelief as you cannot comprehend the nature of this mysterious place.");
+        " you stand in disbelief as you don't understand how this is real.");
     System.out.println("The same questions linger in your thoughts nonstop.");
     System.out.println("Are you alone? Perhaps stuck here forever? Only time can tell.");
     System.out.println("Still, there's no guarantee time even exists here");
@@ -64,8 +64,10 @@ public class BackroomsStoryProject {
 
     int num_of_levels_passed = 0;
 
+    int entities_encountered = 0;
+
     // Placeholder for inventory
-    String[] inventory = {"empty", "empty", "empty", "empty", "empty", "empty"};
+    String[] inventory = {"FISTS", "empty", "empty", "empty", "empty", "empty"};
 
     firstLevel(name, health, inventory, num_of_levels_passed);
 
@@ -102,7 +104,7 @@ public class BackroomsStoryProject {
   public static void currentStats(String player_name, int health, String[] inventory) {
 
   	System.out.println("----------" + player_name + "----------");
-  	System.out.println("Health: " + health + "%");
+  	System.out.println("\nHealth: " + health + "%");
   	System.out.println("\nInventory: ");
 
   	for (int i = 0; i < inventory.length; i++) {
@@ -141,5 +143,5 @@ public class BackroomsStoryProject {
   	System.out.println("╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝     ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚══════╝");
   	System.out.println("                                                                                    ");
   }
-  
+ 
 }
