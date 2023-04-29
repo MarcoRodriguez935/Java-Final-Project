@@ -76,19 +76,27 @@ public class BackroomsStoryProject {
 		System.out.println("\nHealth: " + health + "%");
 		System.out.println("\nInventory: ");
 
-		for (int i = 0; i < inventory.length; i++) {
-		  	System.out.println(" " + (i+1) + ") " + inventory[i]);
-		}
+		displayList(inventory);
 
 		System.out.println();
-	  	}
+	}
 
 	public static boolean playerIsDead(int health) {
 		if (health <= 0) 
 		  	return true;
 		else 
 		  	return false;
-	  	}
+	}
+
+	public static String readName() {
+	  	Scanner input = new Scanner(System.in);
+
+		System.out.print("Enter your name: ");
+		String name = input.nextLine();
+		name = name.trim();
+
+		return name;
+	}
 
 	public static void introMessage(String name) {
 
@@ -188,33 +196,23 @@ public class BackroomsStoryProject {
 	  	System.out.println("\nStatus: " + player_status);
 	  	System.out.println("\nInventory: ");
 
-	  	for (int i = 0; i < inventory.length; i++) {
-	  		System.out.println(" "+ (i+1) + ") " + inventory[i]);
-	  	}
+	  	displayList(inventory);
 
 	  	System.out.println("\nLevels Traversed: ");
 
-	  	for (int i = 0; i < name_of_levels_passed.length; i++) {
-	  		System.out.println(" " + (i+1) + ") " + name_of_levels_passed[i]);
-	  	}
+	  	displayList(name_of_levels_passed);
 
 	  	System.out.println("\nEntities Encountered: ");
 
-	  	for (int i = 0; i < entities_encountered_list.length; i++) {
-	  		System.out.println(" " + (i+1) + ") " + entities_encountered_list[i]);
-	  	}
+	  	displayList(entities_encountered_list);
 
 	  	System.out.println();
-	  }
+	}
 
-	public static String readName() {
-	  	Scanner input = new Scanner(System.in);
-
-		System.out.print("Enter your name: ");
-		String name = input.nextLine();
-		name = name.trim();
-
-		return name;
+	public static void displayList(String[] list) {
+		for (int i = 0; i < list.length; i++) {
+			System.out.println(" " + (i+1) + ") " + list[i]);
+		}
 	}
 
 	public static void runHelpProgram() {
