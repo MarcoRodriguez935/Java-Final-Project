@@ -170,7 +170,7 @@ public class BackroomsStoryProject {
 	  	String player_outcome = "";
 	  	String player_status = "";
 
-	  	if (health < 0) {
+	  	if (health <= 0) {
 	  		health = 0;
 	  		player_outcome = "\nVictim: ";
 	  		player_status = "Dead";
