@@ -25,12 +25,12 @@ public class BackroomsStoryProject {
 
 		int num_of_levels_passed = 0;
 
-		String[] name_of_levels_passed = {"LEVEL 1", "", "", "", "", ""};
+		String[] name_of_levels_passed = {"LEVEL 1", "???", "???", "???", "???", "???"};
 
 		// Placeholder for inventory
 		String[] inventory = {"FISTS", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY"};
 
-		String[] entities_encountered_list = {"", "", "", "", "", ""};
+		String[] entities_encountered_list = {"???", "???", "???", "???", "???", "???"};
 
 		firstLevel(name, health, inventory, num_of_levels_passed, name_of_levels_passed,
 		    entities_encountered_list);
@@ -56,7 +56,9 @@ public class BackroomsStoryProject {
 
 	public static void final_level(String name, int health, String[] inventory) {
 	  	return;
-	 }
+	}
+
+
 
 	public static String getRandomRoom(String current_level) {
 
@@ -188,31 +190,42 @@ public class BackroomsStoryProject {
 	  		player_status = "Alive";
 	  	}
 
-
 	  	System.out.println(player_outcome + name);
-
-
 	  	System.out.println("\nHealth: " + health + "%");
 	  	System.out.println("\nStatus: " + player_status);
-	  	System.out.println("\nInventory: ");
 
+	  	System.out.println("\nInventory: ");
 	  	displayList(inventory);
 
 	  	System.out.println("\nLevels Traversed: ");
-
 	  	displayList(name_of_levels_passed);
 
 	  	System.out.println("\nEntities Encountered: ");
-
 	  	displayList(entities_encountered_list);
 
 	  	System.out.println();
+
+	  	if (playerIsDead(health)) {
+	  		deathScreen();
+	  	}
+	  	else 
+	  		victoryScreen();
 	}
 
 	public static void displayList(String[] list) {
 		for (int i = 0; i < list.length; i++) {
 			System.out.println(" " + (i+1) + ") " + list[i]);
 		}
+	}
+
+	public static String[] addToList(String[] list, String addition) {
+		for (int i = 0; i < list.length; i++) {
+			if (list[i].equals("EMPTY") || list[i].equals("???")) {
+				list[i] = addition;
+				break;
+			}
+		}
+		return list;
 	}
 
 	public static void runHelpProgram() {
