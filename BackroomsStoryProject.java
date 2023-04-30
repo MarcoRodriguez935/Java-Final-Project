@@ -35,14 +35,14 @@ public class BackroomsStoryProject {
 									  //we can finish the game with the final level
 
 		String[] levels_passed = {" ???", " ???", " ???", " ???", " ???", 
-								  " ???", " ???", " ???", " ???", "???"};
+					  " ???", " ???", " ???", " ???", "???"};
 		String[] levels_remaining = {"pass", "Level 2", "Level 3", "Level 4", "Level 5",
-									 "Level 6", "Level 7", "Level 8", "Level 9", "pass"};
+					     "Level 6", "Level 7", "Level 8", "Level 9", "pass"};
 
 		String[] entities_encountered = {"???", "???", "???", "???", "???", 
-									     "???", "???", "???", "???", "???"};
+						 "???", "???", "???", "???", "???"};
 		String[] entities_remaining = {"pass", "Entity 2", "Entity 3", "Entity 4", "Entity 5", 
-									   "Entity 6", "Entity 7", "Entity 8", "Entity 9", "pass"};
+					      "Entity 6", "Entity 7", "Entity 8", "Entity 9", "pass"};
 
 		// Start first level
 		level1(name, health, inventory, num_of_levels_passed, levels_passed,
