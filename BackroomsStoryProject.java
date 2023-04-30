@@ -1,5 +1,9 @@
 import java.util.Scanner;
 
+// name, health, inventory, entities_encountered_list, name_of_levels_passed
+// ^ These variables might be passed through most methods/levels so we can just copy and paste
+// from here
+
 public class BackroomsStoryProject {
 	public static void main(String[] args) {
 	  	Scanner input = new Scanner(System.in);
