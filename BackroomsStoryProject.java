@@ -25,22 +25,23 @@ public class BackroomsStoryProject {
 
 		int num_of_levels_passed = 0;
 
-		String[] name_of_levels_passed = {"LEVEL 1", "???", "???", "???", "???", "???"};
+		String[] levels_passed = {"???", "???", "???", "???", "???", "???"};
 
 		// Placeholder for inventory
 		String[] inventory = {"FISTS", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY"};
 
 		String[] entities_encountered_list = {"???", "???", "???", "???", "???", "???"};
 
-		firstLevel(name, health, inventory, num_of_levels_passed, name_of_levels_passed,
+		firstLevel(name, health, inventory, num_of_levels_passed, levels_passed,
 		    entities_encountered_list);
 
-		// displayFinalResults(name, health, inventory, entities_encountered_list, name_of_levels_passed);
+		// displayFinalResults(name, health, inventory, entities_encountered_list, 
+		// 	name_of_levels_passed);
 
 	}
 
 	public static void firstLevel(String name, int health, String[] inventory, 
-		int num_of_levels_passed, String[] name_of_levels_passed, 
+		int num_of_levels_passed, String[] levels_passed, 
 		String[] entities_encountered_list) {
 
 		System.out.println("LEVEL 1\n");
@@ -49,9 +50,9 @@ public class BackroomsStoryProject {
 
 
 
-		String current_level = "level1";
-		num_of_levels_passed++;
+		String current_level = "Level 1";
 
+		num_of_levels_passed++;
 	}
 
 	public static void final_level(String name, int health, String[] inventory) {
@@ -173,7 +174,7 @@ public class BackroomsStoryProject {
 	}
 
 	public static void displayFinalResults(String name, int health, String[] inventory, 
-	  	String[] entities_encountered_list, String[] name_of_levels_passed) {
+	  	String[] entities_encountered_list, String[] levels_passed) {
 
 	  	System.out.println("\n---------PLAYER REPORT---------");
 
@@ -198,7 +199,7 @@ public class BackroomsStoryProject {
 	  	displayList(inventory);
 
 	  	System.out.println("\nLevels Traversed: ");
-	  	displayList(name_of_levels_passed);
+	  	displayList(levels_passed);
 
 	  	System.out.println("\nEntities Encountered: ");
 	  	displayList(entities_encountered_list);
@@ -226,6 +227,13 @@ public class BackroomsStoryProject {
 			}
 		}
 		return list;
+	}
+
+	public static String[] updateLevelsPassed(String[] levels_passed, String current_level) {
+		if (current_level.equals("Level 1")) 
+			levels_passed[0] = current_level;
+
+		return levels_passed;
 	}
 
 	public static void runHelpProgram() {
