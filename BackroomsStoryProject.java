@@ -36,8 +36,6 @@ public class BackroomsStoryProject {
 
 		String[] levels_passed = {"???", "???", "???", "???", "???", 
 					  "???", "???", "???", "???", "???"};
-		String[] levels_remaining = {"Level 1", "Level 2", "Level 3", "Level 4", "Level 5",
-					     "Level 6", "Level 7", "Level 8", "Level 9", "pass"};
 
 		String[] entities_encountered = {"???", "???", "???", "???", "???", 
 						 "???", "???", "???", "???", "???"};
@@ -45,8 +43,8 @@ public class BackroomsStoryProject {
 					      "Entity 6", "Entity 7", "Entity 8", "Entity 9", "pass"};
 
 		// Start first level
-		level1(name, health, inventory, num_of_levels_passed, levels_passed,
-		    levels_remaining, entities_encountered, entities_remaining);
+		level1(name, health, inventory, num_of_levels_passed, levels_passed, 
+		       entities_encountered, entities_remaining);
 
 		// displayFinalResults(name, health, inventory, entities_encountered, 
 		// levels_passed);
@@ -55,7 +53,7 @@ public class BackroomsStoryProject {
 
 
 	public static void level1(String name, int health, String[] inventory, 
-		int num_of_levels_passed, String[] levels_passed, String[] levels_remaining,
+		int num_of_levels_passed, String[] levels_passed,
 		String[] entities_encountered, String[] entities_remaining) {
 
 		System.out.println("LEVEL 1\n");
@@ -66,7 +64,6 @@ public class BackroomsStoryProject {
 
 		String current_level = "Level 1";
 		updateLevelsPassed(levels_passed, current_level);
-		updateRemainingLists(levels_remaining, current_level);
 		
 
 		num_of_levels_passed++;
@@ -74,36 +71,6 @@ public class BackroomsStoryProject {
 
 	public static void final_level(String name, int health, String[] inventory) {
 	  	return;
-	}
-
-	public static void getRandomLevel(String name, int health, String[] inventory, 
-		int num_of_levels_passed, String[] levels_passed, String[] levels_remaining,
-		String[] entities_encountered, String[] entities_remaining) {
-
-		int r = (int)(Math.random() * (9+1));
-
-		String random_level = levels_remaining[r];
-
-		if (random_level.equals("Level 2"))
-			System.out.println("run level 2 TODO");
-		else if (random_level.equals("Level 3"))
-			System.out.println("run level 3 TODO");
-		else if (random_level.equals("Level 4"))
-			System.out.println("run level 4 TODO");
-		else if (random_level.equals("Level 5"))
-			System.out.println("run level 5 TODO");
-		else if (random_level.equals("Level 6"))
-			System.out.println("run level 6 TODO");
-		else if (random_level.equals("Level 7"))
-			System.out.println("run level 7 TODO");
-		else if (random_level.equals("Level 8"))
-			System.out.println("run level 8 TODO");
-		else if (random_level.equals("Level 9"))
-			System.out.println("run level 9 TODO");
-		else 
-			getRandomLevel(name, health, inventory, num_of_levels_passed, levels_passed,
-						   levels_remaining, entities_encountered, entities_remaining);
-
 	}
 
 	public static void currentStats(String player_name, int health, String[] inventory) {
@@ -230,33 +197,6 @@ public class BackroomsStoryProject {
 
 		return entities_encountered;
 	}
-
-	// This method updates the lists of levels/entities so the random method won't choose it twice
-	// Use for levels_remaining and entities_remaining
-	public static String[] updateRemainingLists(String[] element_list, String current_element) {
-        if (current_element.equals("Level 1") || current_element.equals("Entity 1"))
-            element_list[0] = "pass";
-        else if (current_element.equals("Level 2") || current_element.equals("Entity 2"))
-            element_list[1] = "pass";
-        else if (current_element.equals("Level 3") || current_element.equals("Entity 3"))
-            element_list[2] = "pass";
-        else if (current_element.equals("Level 4") || current_element.equals("Entity 4"))
-            element_list[3] = "pass";
-        else if (current_element.equals("Level 5") || current_element.equals("Entity 5"))
-            element_list[4] = "pass";
-        else if (current_element.equals("Level 6") || current_element.equals("Entity 6"))
-            element_list[5] = "pass";
-        else if (current_element.equals("Level 7") || current_element.equals("Entity 7"))
-            element_list[6] = "pass";
-        else if (current_element.equals("Level 8") || current_element.equals("Entity 8"))
-            element_list[7] = "pass";
-        else if (current_element.equals("Level 9") || current_element.equals("Entity 9"))
-            element_list[8] = "pass";
-        else if (current_element.equals("Level 10") || current_element.equals("Entity 10"))
-            element_list[9] = "pass";
-
-        return element_list;
-    }
 
 	public static void runHelpProgram() {
 	  	System.out.println("\n----------Description-----------");
