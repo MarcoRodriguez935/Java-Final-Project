@@ -63,7 +63,7 @@ public class BackroomsStoryProject {
 
 
 		String current_level = "Level 1";
-		updateLevelsPassed(levels_passed, current_level);
+		updateElementsPassed(levels_passed, current_level);
 		
 
 		num_of_levels_passed++;
