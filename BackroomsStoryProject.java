@@ -34,14 +34,14 @@ public class BackroomsStoryProject {
 		int num_of_levels_passed = 0; // If a certain number of levels have passed, 
 									  //we can finish the game with the final level
 
-		String[] levels_passed = {" ???", " ???", " ???", " ???", " ???", 
-					  " ???", " ???", " ???", " ???", "???"};
-		String[] levels_remaining = {"pass", "Level 2", "Level 3", "Level 4", "Level 5",
+		String[] levels_passed = {"???", "???", "???", "???", "???", 
+					  "???", "???", "???", "???", "???"};
+		String[] levels_remaining = {"Level 1", "Level 2", "Level 3", "Level 4", "Level 5",
 					     "Level 6", "Level 7", "Level 8", "Level 9", "pass"};
 
 		String[] entities_encountered = {"???", "???", "???", "???", "???", 
 						 "???", "???", "???", "???", "???"};
-		String[] entities_remaining = {"pass", "Entity 2", "Entity 3", "Entity 4", "Entity 5", 
+		String[] entities_remaining = {"Entity 1", "Entity 2", "Entity 3", "Entity 4", "Entity 5", 
 					      "Entity 6", "Entity 7", "Entity 8", "Entity 9", "pass"};
 
 		// Start first level
@@ -165,7 +165,7 @@ public class BackroomsStoryProject {
 
 	public static void displayList(String[] list) {
 		for (int i = 0; i < list.length; i++) {
-				System.out.println(" " + (i+1) + ") " + list[i]);
+				System.out.println(" " + (i+1) + ")  " + list[i]);
 		}
 	}
 
@@ -208,23 +208,23 @@ public class BackroomsStoryProject {
 		String current_entity) {
 		if (current_entity.equals("Entity 1"))
 			entities_encountered[0] = current_entity;
-		else if (current_entity.equals(" Entity 2"))
+		else if (current_entity.equals("Entity 2"))
 			entities_encountered[1] = current_entity;
-		else if (current_entity.equals(" Entity 3"))
+		else if (current_entity.equals("Entity 3"))
 			entities_encountered[2] = current_entity;
-		else if (current_entity.equals(" Entity 4"))
+		else if (current_entity.equals("Entity 4"))
 			entities_encountered[3] = current_entity;
-		else if (current_entity.equals(" Entity 5"))
+		else if (current_entity.equals("Entity 5"))
 			entities_encountered[4] = current_entity;
-		else if (current_entity.equals(" Entity 6"))
+		else if (current_entity.equals("Entity 6"))
 			entities_encountered[5] = current_entity;
-		else if (current_entity.equals(" Entity 7"))
+		else if (current_entity.equals("Entity 7"))
 			entities_encountered[6] = current_entity;
-		else if (current_entity.equals(" Entity 8"))
+		else if (current_entity.equals("Entity 8"))
 			entities_encountered[7] = current_entity;
-		else if (current_entity.equals(" Entity 9"))
+		else if (current_entity.equals("Entity 9"))
 			entities_encountered[8] = current_entity;
-		else if (current_entity.equals(" Entity 10"))
+		else if (current_entity.equals("Entity 10"))
 			entities_encountered[9] = current_entity;
 
 		return entities_encountered;
@@ -233,25 +233,25 @@ public class BackroomsStoryProject {
 	// This method updates the lists of levels/entities so the random method won't choose it twice
 	// Use for levels_remaining and entities_remaining
 	public static String[] erasePassedElements(String[] element_list, String current_element) {
-        if (current_element.equals(" Level 1") || current_element.equals(" Entity 1"))
+        if (current_element.equals("Level 1") || current_element.equals("Entity 1"))
             element_list[0] = "pass";
-        else if (current_element.equals(" Level 2") || current_element.equals(" Entity 2"))
+        else if (current_element.equals("Level 2") || current_element.equals("Entity 2"))
             element_list[1] = "pass";
-        else if (current_element.equals(" Level 3") || current_element.equals(" Entity 3"))
+        else if (current_element.equals("Level 3") || current_element.equals("Entity 3"))
             element_list[2] = "pass";
-        else if (current_element.equals(" Level 4") || current_element.equals(" Entity 4"))
+        else if (current_element.equals("Level 4") || current_element.equals("Entity 4"))
             element_list[3] = "pass";
-        else if (current_element.equals(" Level 5") || current_element.equals(" Entity 5"))
+        else if (current_element.equals("Level 5") || current_element.equals("Entity 5"))
             element_list[4] = "pass";
-        else if (current_element.equals(" Level 6") || current_element.equals(" Entity 6"))
+        else if (current_element.equals("Level 6") || current_element.equals("Entity 6"))
             element_list[5] = "pass";
-        else if (current_element.equals(" Level 7") || current_element.equals(" Entity 7"))
+        else if (current_element.equals("Level 7") || current_element.equals("Entity 7"))
             element_list[6] = "pass";
-        else if (current_element.equals(" Level 8") || current_element.equals(" Entity 8"))
+        else if (current_element.equals("Level 8") || current_element.equals("Entity 8"))
             element_list[7] = "pass";
-        else if (current_element.equals(" Level 9") || current_element.equals(" Entity 9"))
+        else if (current_element.equals("Level 9") || current_element.equals("Entity 9"))
             element_list[8] = "pass";
-        else if (current_element.equals(" Level 10") || current_element.equals(" Entity 10"))
+        else if (current_element.equals("Level 10") || current_element.equals("Entity 10"))
             element_list[9] = "pass";
 
         return element_list;
