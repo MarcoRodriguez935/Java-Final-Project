@@ -65,7 +65,8 @@ public class BackroomsStoryProject {
 
 
 		String current_level = "Level 1";
-		levels_passed = updateLevelsPassed(levels_passed, current_level);
+		updateLevelsPassed(levels_passed, current_level);
+		erasePassedElements(levels_remaining, current_level);
 		
 
 		num_of_levels_passed++;
