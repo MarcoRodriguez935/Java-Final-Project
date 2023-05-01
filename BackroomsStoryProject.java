@@ -48,8 +48,8 @@ public class BackroomsStoryProject {
 		level1(name, health, inventory, num_of_levels_passed, levels_passed,
 		    levels_remaining, entities_encountered, entities_remaining);
 
-		// displayFinalResults(name, health, inventory, entities_encountered_list, 
-		// 	name_of_levels_passed);
+		// displayFinalResults(name, health, inventory, entities_encountered, 
+		// levels_passed);
 
 	}
 
@@ -64,7 +64,7 @@ public class BackroomsStoryProject {
 
 
 
-		String current_level = " Level 1";
+		String current_level = "Level 1";
 		levels_passed = updateLevelsPassed(levels_passed, current_level);
 		
 
@@ -180,25 +180,25 @@ public class BackroomsStoryProject {
 	}
 
 	public static String[] updateLevelsPassed(String[] levels_passed, String current_level) {
-		if (current_level.equals(" Level 1")) 
+		if (current_level.equals("Level 1")) 
 			levels_passed[0] = current_level;
-		else if (current_level.equals(" Level 2")) 
+		else if (current_level.equals("Level 2")) 
 			levels_passed[1] = current_level;
-		else if (current_level.equals(" Level 3")) 
+		else if (current_level.equals("Level 3")) 
 			levels_passed[2] = current_level;
-		else if (current_level.equals(" Level 4")) 
+		else if (current_level.equals("Level 4")) 
 			levels_passed[3] = current_level;
-		else if (current_level.equals(" Level 5")) 
+		else if (current_level.equals("Level 5")) 
 			levels_passed[4] = current_level;
-		else if (current_level.equals(" Level 6")) 
+		else if (current_level.equals("Level 6")) 
 			levels_passed[5] = current_level;
-		else if (current_level.equals(" Level 7")) 
+		else if (current_level.equals("Level 7")) 
 			levels_passed[6] = current_level;
-		else if (current_level.equals(" Level 8")) 
+		else if (current_level.equals("Level 8")) 
 			levels_passed[7] = current_level;
-		else if (current_level.equals(" Level 9")) 
+		else if (current_level.equals("Level 9")) 
 			levels_passed[8] = current_level;
-		else if (current_level.equals(" Level 10")) 
+		else if (current_level.equals("Level 10")) 
 			levels_passed[9] = current_level;
 
 		return levels_passed;
