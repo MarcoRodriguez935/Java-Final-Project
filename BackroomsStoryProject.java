@@ -66,7 +66,7 @@ public class BackroomsStoryProject {
 
 		String current_level = "Level 1";
 		updateLevelsPassed(levels_passed, current_level);
-		erasePassedElements(levels_remaining, current_level);
+		updateRemainingLists(levels_remaining, current_level);
 		
 
 		num_of_levels_passed++;
@@ -233,7 +233,7 @@ public class BackroomsStoryProject {
 
 	// This method updates the lists of levels/entities so the random method won't choose it twice
 	// Use for levels_remaining and entities_remaining
-	public static String[] erasePassedElements(String[] element_list, String current_element) {
+	public static String[] updateRemainingLists(String[] element_list, String current_element) {
         if (current_element.equals("Level 1") || current_element.equals("Entity 1"))
             element_list[0] = "pass";
         else if (current_element.equals("Level 2") || current_element.equals("Entity 2"))
