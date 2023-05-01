@@ -147,55 +147,29 @@ public class BackroomsStoryProject {
 		return inv;
 	}
 
-	public static String[] updateLevelsPassed(String[] levels_passed, String current_level) {
-		if (current_level.equals("Level 1")) 
-			levels_passed[0] = current_level;
-		else if (current_level.equals("Level 2")) 
-			levels_passed[1] = current_level;
-		else if (current_level.equals("Level 3")) 
-			levels_passed[2] = current_level;
-		else if (current_level.equals("Level 4")) 
-			levels_passed[3] = current_level;
-		else if (current_level.equals("Level 5")) 
-			levels_passed[4] = current_level;
-		else if (current_level.equals("Level 6")) 
-			levels_passed[5] = current_level;
-		else if (current_level.equals("Level 7")) 
-			levels_passed[6] = current_level;
-		else if (current_level.equals("Level 8")) 
-			levels_passed[7] = current_level;
-		else if (current_level.equals("Level 9")) 
-			levels_passed[8] = current_level;
-		else if (current_level.equals("Level 10")) 
-			levels_passed[9] = current_level;
+	public static String[] updateElementsPassed(String[] element_list, String current_element) {
+		if (current_element.equals("Level 1") || current_element.equals("Entity 1"))
+			element_list[0] = current_element;
+		else if (current_element.equals("Level 2") || current_element.equals("Entity 2"))
+			element_list[1] = current_element;
+		else if (current_element.equals("Level 3") || current_element.equals("Entity 3"))
+			element_list[2] = current_element;
+		else if (current_element.equals("Level 4") || current_element.equals("Entity 4"))
+			element_list[3] = current_element;
+		else if (current_element.equals("Level 5") || current_element.equals("Entity 5"))
+			element_list[4] = current_element;
+		else if (current_element.equals("Level 6") || current_element.equals("Entity 6"))
+			element_list[5] = current_element;
+		else if (current_element.equals("Level 7") || current_element.equals("Entity 7"))
+			element_list[6] = current_element;
+		else if (current_element.equals("Level 8") || current_element.equals("Entity 8"))
+			element_list[7] = current_element;
+		else if (current_element.equals("Level 9") || current_element.equals("Entity 9"))
+			element_list[8] = current_element;
+		else if (current_element.equals("Level 10") || current_element.equals("Entity 10"))
+			element_list[9] = current_element;
 
-		return levels_passed;
-	}
-
-	public static String[] updateEntitiesEncountered(String[] entities_encountered, 
-		String current_entity) {
-		if (current_entity.equals("Entity 1"))
-			entities_encountered[0] = current_entity;
-		else if (current_entity.equals("Entity 2"))
-			entities_encountered[1] = current_entity;
-		else if (current_entity.equals("Entity 3"))
-			entities_encountered[2] = current_entity;
-		else if (current_entity.equals("Entity 4"))
-			entities_encountered[3] = current_entity;
-		else if (current_entity.equals("Entity 5"))
-			entities_encountered[4] = current_entity;
-		else if (current_entity.equals("Entity 6"))
-			entities_encountered[5] = current_entity;
-		else if (current_entity.equals("Entity 7"))
-			entities_encountered[6] = current_entity;
-		else if (current_entity.equals("Entity 8"))
-			entities_encountered[7] = current_entity;
-		else if (current_entity.equals("Entity 9"))
-			entities_encountered[8] = current_entity;
-		else if (current_entity.equals("Entity 10"))
-			entities_encountered[9] = current_entity;
-
-		return entities_encountered;
+		return element_list;
 	}
 
 	public static void runHelpProgram() {
