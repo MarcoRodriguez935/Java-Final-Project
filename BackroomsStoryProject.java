@@ -57,8 +57,7 @@ public class BackroomsStoryProject {
 		updateElementsPassed(levels_passed, current_level);
 
 
-		String current_entity = randomEntityEncounter(current_level);
-		updateElementsPassed(entities_encountered, current_entity);
+		health = randomEntityEncounter(health, inventory, current_level);
 
 	}
 
