@@ -57,7 +57,7 @@ public class BackroomsStoryProject {
 		updateElementsPassed(levels_passed, current_level);
 
 
-		health = randomEntityEncounter(health, inventory, current_level);
+		health = randomEntityEncounter(health, inventory, current_level, entities_encountered);
 
 	}
 
@@ -142,7 +142,8 @@ public class BackroomsStoryProject {
 	}
 	
 	// randomEntityEncounter(inventory, entities_encountered, current_level);
-	public static int randomEntityEncounter(int health, String[] inventory, String current_level) {
+	public static int randomEntityEncounter(int health, String[] inventory, String current_level, 
+		String[] entities_encountered) {
 
 		String current_entity = "";
 		int entity_health = 0;
@@ -153,6 +154,7 @@ public class BackroomsStoryProject {
 			entity_health = 100;
 			entity_type = "Neutral";
 			getEntityDescription(current_entity, entity_health, entity_type);
+			updateElementsPassed(entities_encountered, current_entity);
 			health = fightEntity(health, inventory, current_entity, entity_health);
 			return health;
 		}	
@@ -165,6 +167,7 @@ public class BackroomsStoryProject {
 					entity_health = 100;
 					entity_type = "Neutral";
 					getEntityDescription(current_entity, entity_health, entity_type);
+					updateElementsPassed(entities_encountered, current_entity);
 					health = fightEntity(health, inventory, current_entity, entity_health);
 					return health;
 				}
@@ -173,6 +176,7 @@ public class BackroomsStoryProject {
 					entity_health = 100;
 					entity_type = "Neutral";
 					getEntityDescription(current_entity, entity_health, entity_type);
+					updateElementsPassed(entities_encountered, current_entity);
 					health = fightEntity(health, inventory, current_entity, entity_health);
 					return health;
 				}
@@ -181,6 +185,7 @@ public class BackroomsStoryProject {
 					entity_health = 100;
 					entity_type = "Neutral";
 					getEntityDescription(current_entity, entity_health, entity_type);
+					updateElementsPassed(entities_encountered, current_entity);
 					health = fightEntity(health, inventory, current_entity, entity_health);
 					return health;
 					
@@ -190,6 +195,7 @@ public class BackroomsStoryProject {
 					entity_health = 100;
 					entity_type = "Neutral";
 					getEntityDescription(current_entity, entity_health, entity_type);
+					updateElementsPassed(entities_encountered, current_entity);
 					health = fightEntity(health, inventory, current_entity, entity_health);
 					return health;
 				}
