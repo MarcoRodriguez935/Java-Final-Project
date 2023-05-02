@@ -212,17 +212,12 @@ public class BackroomsStoryProject {
 	}
 
 	public static String[] updateElementsPassed(String[] element_list, String current_element) {
-		if (current_element.equals("Level 1") || current_element.equals("Entity 1"))
-			element_list[0] = current_element;
-		else if (current_element.equals("Level 2") || current_element.equals("Entity 2"))
-			element_list[1] = current_element;
-		else if (current_element.equals("Level 3") || current_element.equals("Entity 3"))
-			element_list[2] = current_element;
-		else if (current_element.equals("Level 4") || current_element.equals("Entity 4"))
-			element_list[3] = current_element;
-		else if (current_element.equals("Level 5") || current_element.equals("Entity 5"))
-			element_list[4] = current_element;
-
+		for (int i = 0; i < element_list.length; i++) {
+			if (element_list[i].equals("???")) {
+				element_list[i] = current_element;
+				break;
+			}	
+		}
 		return element_list;
 	}
 
