@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-// name, health, inventory, num_of_levels_passed, levels_passed, levels_remaining, entities_encountered, entities_remaining
+// name, health, inventory, levels_passed, entities_encountered
 // ^ These variables might be passed through most methods/levels so we can just copy and paste
 // from here
 
@@ -30,19 +30,15 @@ public class BackroomsStoryProject {
 
 		String[] inventory = {"FISTS", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY"};
 
-		
-		int num_of_levels_passed = 0; // If a certain number of levels have passed, 
-									  //we can finish the game with the final level
 
 		String[] levels_passed = {"???", "???", "???", "???", "???", 
-					  "???", "???", "???", "???", "???"};
+					  		      "???", "???", "???", "???", "???"};
 
 		String[] entities_encountered = {"???", "???", "???", "???", "???", 
-						 "???", "???", "???", "???", "???"};
+						                 "???", "???", "???", "???", "???"};
 
 		// Start first level
-		level1(name, health, inventory, num_of_levels_passed, levels_passed, 
-		       entities_encountered, entities_remaining);
+		level1(name, health, inventory, levels_passed, entities_encountered);
 
 		// displayFinalResults(name, health, inventory, entities_encountered, 
 		// levels_passed);
@@ -51,8 +47,7 @@ public class BackroomsStoryProject {
 
 
 	public static void level1(String name, int health, String[] inventory, 
-		int num_of_levels_passed, String[] levels_passed,
-		String[] entities_encountered, String[] entities_remaining) {
+		String[] levels_passed, String[] entities_encountered) {
 
 		System.out.println("LEVEL 1\n");
 
@@ -62,14 +57,18 @@ public class BackroomsStoryProject {
 
 		String current_level = "Level 1";
 		updateElementsPassed(levels_passed, current_level);
-		
 
-		num_of_levels_passed++;
+
+		String current_entity = randomEntityEncounter(current_level);
+		updateElementsPassed(entities_encountered, current_entity);
+
 	}
 
 	public static void final_level(String name, int health, String[] inventory) {
 	  	return;
 	}
+
+
 
 	public static void currentStats(String player_name, int health, String[] inventory) {
 
@@ -143,6 +142,75 @@ public class BackroomsStoryProject {
 			}
 		}
 		return inv;
+	}
+
+	// randomEntityEncounter(inventory, entities_encountered, current_level);
+	public static String randomEntityEncounter(String current_level) {
+
+		String current_entity = "";
+		int entity_health = 0;
+		String entity_type = ""; //Hostile, or Safe
+
+		if (current_level.equals("Level 1")) {
+			current_entity = "Entity 1";
+			entity_health = 100;
+			entity_type = "Neutral";
+			getEntityDescription(current_entity, entity_health, entity_type);
+			return current_entity;
+		}	
+		else {
+			int random_enc = (int)(Math.random() * 51);
+
+			if (random_enc % 2 == 0) {
+				if (current_level.equals("Level 2")) {
+					current_entity = "Entity 2";
+					entity_health = 100;
+					entity_type = "Neutral";
+					getEntityDescription(current_entity, entity_health, entity_type);
+					return current_entity;
+				}
+				else if (current_level.equals("Level 3")) {
+					current_entity = "Entity 3";
+					entity_health = 100;
+					entity_type = "Neutral";
+					getEntityDescription(current_entity, entity_health, entity_type);
+					return current_entity;
+				}
+				else if (current_level.equals("Level 4")) {
+					current_entity = "Entity 4";
+					entity_health = 100;
+					entity_type = "Neutral";
+					getEntityDescription(current_entity, entity_health, entity_type);
+					return current_entity;
+				}
+				else if (current_level.equals("Level 5")) {
+					current_entity = "Entity 5";
+					entity_health = 100;
+					entity_type = "Neutral";
+					getEntityDescription(current_entity, entity_health, entity_type);
+					return current_entity;
+				}
+			}
+		}
+		return "none";
+	}
+
+	public static void getEntityDescription(String current_entity, int entity_health,
+		String entity_type) {
+		System.out.println("\nENTITY ENCOUNTERED: " + current_entity);
+		System.out.println("\nENTITY HEALTH: " + entity_health + "%");
+		System.out.println("\nENTITY TYPE: " + entity_type);
+
+		if (current_entity.equals("Entity 1"))
+			System.out.println("\nDescription for Entity 1");
+		else if (current_entity.equals("Entity 2"))
+			System.out.println("\nDescription for Entity 2");
+		else if (current_entity.equals("Entity 3"))
+			System.out.println("\nDescription for Entity 3");
+		else if (current_entity.equals("Entity 4"))
+			System.out.println("\nDescription for Entity 4");
+		else if (current_entity.equals("Entity 5"))
+			System.out.println("\nDescription for Entity 5");
 	}
 
 	public static String[] updateElementsPassed(String[] element_list, String current_element) {
@@ -266,6 +334,4 @@ public class BackroomsStoryProject {
 		System.out.println(" ░ ░        ░ ░    ░           ░  ░     ░ ░ ░           ░  ░          ░  ░  ░    ");
 		System.out.println(" ░ ░                                      ░                               ░      ");
 	}
-
-
 }
