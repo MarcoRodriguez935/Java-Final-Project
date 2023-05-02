@@ -238,8 +238,7 @@ public class BackroomsStoryProject {
 	  	    + "levels are fixed,\nit is intended to be a random experience through each playthrough.\nIn these levels, you may "
 	  	    + "encounter items, new locations, or entities. Use your intuition as you play.");
 
-	  	System.out.println("\n----------GAME STARTED----------");
-	  	System.out.println();
+	  	System.exit(1);
 	}
 
 	public static String readName() {
