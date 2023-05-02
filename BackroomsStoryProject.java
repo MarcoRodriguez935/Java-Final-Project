@@ -39,8 +39,6 @@ public class BackroomsStoryProject {
 
 		String[] entities_encountered = {"???", "???", "???", "???", "???", 
 						 "???", "???", "???", "???", "???"};
-		String[] entities_remaining = {"Entity 1", "Entity 2", "Entity 3", "Entity 4", "Entity 5", 
-					      "Entity 6", "Entity 7", "Entity 8", "Entity 9", "pass"};
 
 		// Start first level
 		level1(name, health, inventory, num_of_levels_passed, levels_passed, 
