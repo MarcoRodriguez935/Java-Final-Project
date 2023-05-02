@@ -141,9 +141,9 @@ public class BackroomsStoryProject {
 		}
 		return inv;
 	}
-
+	
 	// randomEntityEncounter(inventory, entities_encountered, current_level);
-	public static String randomEntityEncounter(String current_level) {
+	public static int randomEntityEncounter(int health, String[] inventory, String current_level) {
 
 		String current_entity = "";
 		int entity_health = 0;
@@ -154,10 +154,11 @@ public class BackroomsStoryProject {
 			entity_health = 100;
 			entity_type = "Neutral";
 			getEntityDescription(current_entity, entity_health, entity_type);
-			return current_entity;
+			health = fightEntity(health, inventory, current_entity, entity_health);
+			return health;
 		}	
 		else {
-			int random_enc = (int)(Math.random() * 51);
+			int random_enc = (int)(Math.random() * 11);
 
 			if (random_enc % 2 == 0) {
 				if (current_level.equals("Level 2")) {
@@ -165,32 +166,37 @@ public class BackroomsStoryProject {
 					entity_health = 100;
 					entity_type = "Neutral";
 					getEntityDescription(current_entity, entity_health, entity_type);
-					return current_entity;
+					health = fightEntity(health, inventory, current_entity, entity_health);
+					return health;
 				}
 				else if (current_level.equals("Level 3")) {
 					current_entity = "Entity 3";
 					entity_health = 100;
 					entity_type = "Neutral";
 					getEntityDescription(current_entity, entity_health, entity_type);
-					return current_entity;
+					health = fightEntity(health, inventory, current_entity, entity_health);
+					return health;
 				}
 				else if (current_level.equals("Level 4")) {
 					current_entity = "Entity 4";
 					entity_health = 100;
 					entity_type = "Neutral";
 					getEntityDescription(current_entity, entity_health, entity_type);
-					return current_entity;
+					health = fightEntity(health, inventory, current_entity, entity_health);
+					return health;
+					
 				}
 				else if (current_level.equals("Level 5")) {
 					current_entity = "Entity 5";
 					entity_health = 100;
 					entity_type = "Neutral";
 					getEntityDescription(current_entity, entity_health, entity_type);
-					return current_entity;
+					health = fightEntity(health, inventory, current_entity, entity_health);
+					return health;
 				}
 			}
 		}
-		return "none";
+		return 0;
 	}
 
 	public static void getEntityDescription(String current_entity, int entity_health,
@@ -211,6 +217,11 @@ public class BackroomsStoryProject {
 			System.out.println("\nDescription for Entity 5");
 	}
 
+	public static int fightEntity(int health, String[] inventory, String current_entity, 
+		int entity_health) {
+		return health;
+	}
+	
 	public static String[] updateElementsPassed(String[] element_list, String current_element) {
 		for (int i = 0; i < element_list.length; i++) {
 			if (element_list[i].equals("???")) {
