@@ -12,7 +12,6 @@ public class BackroomsStoryProject {
 		for (int i = 0; i < args.length; i++) {
 			if (args[i].equalsIgnoreCase("-help")) {
 		    	runHelpProgram();
-		    	break;
 		    }
 		}
 
