@@ -31,11 +31,9 @@ public class BackroomsStoryProject {
 		String[] inventory = {"FISTS", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY"};
 
 
-		String[] levels_passed = {"???", "???", "???", "???", "???", 
-					  		      "???", "???", "???", "???", "???"};
+		String[] levels_passed = {"???", "???", "???", "???", "???", "???"};
 
-		String[] entities_encountered = {"???", "???", "???", "???", "???", 
-						                 "???", "???", "???", "???", "???"};
+		String[] entities_encountered = {"???", "???", "???", "???", "???", "???};
 
 		// Start first level
 		level1(name, health, inventory, levels_passed, entities_encountered);
@@ -224,16 +222,6 @@ public class BackroomsStoryProject {
 			element_list[3] = current_element;
 		else if (current_element.equals("Level 5") || current_element.equals("Entity 5"))
 			element_list[4] = current_element;
-		else if (current_element.equals("Level 6") || current_element.equals("Entity 6"))
-			element_list[5] = current_element;
-		else if (current_element.equals("Level 7") || current_element.equals("Entity 7"))
-			element_list[6] = current_element;
-		else if (current_element.equals("Level 8") || current_element.equals("Entity 8"))
-			element_list[7] = current_element;
-		else if (current_element.equals("Level 9") || current_element.equals("Entity 9"))
-			element_list[8] = current_element;
-		else if (current_element.equals("Level 10") || current_element.equals("Entity 10"))
-			element_list[9] = current_element;
 
 		return element_list;
 	}
