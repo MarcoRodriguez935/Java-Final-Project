@@ -202,7 +202,7 @@ public class BackroomsStoryProject {
 		return player_has_item;
 	}
 	
-	// randomEntityEncounter(inventory, entities_encountered, current_level);
+	// entityEncounter(health, inventory, current_level, entities_encountered);
 	public static int entityEncounter(int health, String[] inventory, String current_level, 
 		String[] entities_encountered) {
 
