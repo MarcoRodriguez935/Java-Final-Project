@@ -202,6 +202,23 @@ public class BackroomsStoryProject {
 		return player_has_item;
 	}
 	
+	public static void readCommand(String[] inv) {
+		Scanner input = new Scanner(System.in);
+
+		System.out.print("> ");
+		String command = input.nextLine();
+		command = command.trim();
+
+		while (!command.equalsIgnoreCase("continue")) {
+			System.out.print("> ");
+			command = input.nextLine();
+			command = command.trim();
+
+			if (command.equals("inventory"))
+				displayList(inv);
+		}
+	}
+	
 	// entityEncounter(health, inventory, current_level, entities_encountered);
 	public static int entityEncounter(int health, String[] inventory, String current_level, 
 		String[] entities_encountered) {
