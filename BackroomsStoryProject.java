@@ -278,9 +278,13 @@ public class BackroomsStoryProject {
 		if (current_entity.equals("REANIMATED CORPSE"))
 			System.out.println("\nA recently deceased wanderer of the backrooms." + 
 				"\nThey do not pose a significant threat and can be taken down easily." + 
-				"\nHowever, be cautious if there are more than one of them.");
+				"\nHowever, be cautious when fighting more than one at a time.");
 		else if (current_entity.equals("SMILER"))
-			System.out.println("\nDescription for SMILER");
+			System.out.println("\nSmilers are well known by their eerie luminescent smile." + 
+				"\nThey mainly lurk in a level's dark areas. Because of this, it is often difficult to" +
+				"\nidentify the rest of their physical features." + 
+				"\nTherefore, be warned, they are often the most dangerous of entities" +
+				"\nand will attack when provoked.");
 		else if (current_entity.equals("SKIN-STEALER"))
 			System.out.println("\nDescription for Entity 3");
 		else if (current_entity.equals("Entity 4"))
