@@ -253,7 +253,7 @@ public class BackroomsStoryProject {
 
 		if (current_level.equals("Level 1")) {
 			current_entity = "REANIMATED CORPSE";
-			entity_health = 70;
+			entity_health = 60;
 			entity_type = "Hostile";
 
 			getEntityDescription(current_entity, entity_health, entity_type);
