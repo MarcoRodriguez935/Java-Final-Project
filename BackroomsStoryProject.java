@@ -50,7 +50,7 @@ public class BackroomsStoryProject {
 
 		currentStats(name, health, inventory);
 
-
+		readCommand(inventory);
 
 		String current_level = "Level 1";
 		updateElementsPassed(levels_passed, current_level);
