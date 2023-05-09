@@ -168,7 +168,7 @@ public class BackroomsStoryProject {
 			System.out.println("\nWEAPONS: ");
 			for (int i = 0; i < inv.length; i++) 
 				if (inv[i].equalsIgnoreCase("fists") || inv[i].equalsIgnoreCase("weapon1") ||
-					inv[i].equalsIgnoreCase("weapon2") || inv[i].equals("weapon3"))
+					inv[i].equalsIgnoreCase("weapon2"))
 				System.out.println(" - " + inv[i]);
 		}
 		else if (item_type.equals("health")) {
@@ -187,9 +187,8 @@ public class BackroomsStoryProject {
 		item = item.trim();
 
 		while (!item.equalsIgnoreCase("fists") && !item.equalsIgnoreCase("weapon1")
-			&& !item.equalsIgnoreCase("weapon2") && !item.equalsIgnoreCase("weapon3")
-			&& !item.equalsIgnoreCase("almond water") && !item.equalsIgnoreCase("bandage")
-			&& !item.equalsIgnoreCase("health pack")) {
+			&& !item.equalsIgnoreCase("weapon2") && !item.equalsIgnoreCase("almond water") 
+			&& !item.equalsIgnoreCase("bandage") && !item.equalsIgnoreCase("health pack")) {
 			System.out.print("> ");
 			item = input.nextLine();
 			item = item.trim();
