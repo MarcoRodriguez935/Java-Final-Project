@@ -82,6 +82,13 @@ public class BackroomsStoryProject {
 		  	return true;
 		else 
 		  	return false;
+	}
+	
+	public static boolean lowHealth(int health) {
+		if (health < 50)
+			return true;
+		else 
+			return false;
 	} 	
 
 	public static void displayFinalResults(String name, int health, String[] inventory, 
@@ -209,23 +216,27 @@ public class BackroomsStoryProject {
 		String command = input.nextLine();
 		command = command.trim();
 
+		String heal;
+
 		while (!command.equalsIgnoreCase("continue")) {
 			System.out.print("> ");
 			command = input.nextLine();
 			command = command.trim();
 
-			if (command.equalsIgnoreCase("inventory")) {
-				System.out.println("\nINVENTORY: ");
-				displayList(inv);
+			if (command.equalsIgnoreCase("fight") || command.equalsIgnoreCase("flee")) {
+				System.out.println("\nPlayer is not currently engaging an entity\n");
 			}
-			else if (command.equalsIgnoreCase("fight") || command.equalsIgnoreCase("flee")) {
-				System.out.println("\nPlayer is not currently engaging an entity");
+			else if (command.equalsIgnoreCase("inventory")) {
+				System.out.println("\nInventory: ");
+				displayList(inv);
+				System.out.println();
 			}
 			else if (command.equals("cmds")) {
 				System.out.println("\nTo proceed: > continue");
 				System.out.println("To fight an entity: > fight");
 				System.out.println("To flee from an entity: > flee");
-				System.out.println("To select an item: > item_name");
+				System.out.println("To select an item when prompted: > item_name");
+				System.out.println("To display the inventory: > inventory");
 				System.out.println("To display this list of commands: > cmds");
 				System.out.println();
 			}
@@ -390,13 +401,15 @@ public class BackroomsStoryProject {
 	  			"\nIn the end, there will be a final level in which you can either escape the backrooms or be" + 
 	  			"\nstuck there forever");
 	  	System.out.println("\n----------GAMEPLAY----------");
-	  	System.out.println("To enter a command/action, enter the desired word following the" + 
+	  	System.out.println("To enter a command/action, enter the desired player action following the" + 
 	     		"\n\">\" character");
 	  	System.out.println("\nLIST OF COMMANDS:");
 	  	System.out.println("To proceed with the story: > continue");
 	  	System.out.println("To fight an entity: > fight");
 	  	System.out.println("To flee from an entity: > flee");
-	  	System.out.println("To select an item: > item_name");
+	  	System.out.println("To select an item when prompted: > item_name");
+	  	System.out.println("To display the inventory: > inventory");
+	  	System.out.println("To display the command list: > cmds");
 
 	  	System.exit(1);
 	}
