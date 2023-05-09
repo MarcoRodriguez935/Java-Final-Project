@@ -214,8 +214,21 @@ public class BackroomsStoryProject {
 			command = input.nextLine();
 			command = command.trim();
 
-			if (command.equals("inventory"))
+			if (command.equalsIgnoreCase("inventory")) {
+				System.out.println("\nINVENTORY: ");
 				displayList(inv);
+			}
+			else if (command.equalsIgnoreCase("fight") || command.equalsIgnoreCase("flee")) {
+				System.out.println("\nPlayer is not currently engaging an entity");
+			}
+			else if (command.equals("cmds")) {
+				System.out.println("\nTo proceed: > continue");
+				System.out.println("To fight an entity: > fight");
+				System.out.println("To flee from an entity: > flee");
+				System.out.println("To select an item: > item_name");
+				System.out.println("To display this list of commands: > cmds");
+				System.out.println();
+			}
 		}
 	}
 	
@@ -251,7 +264,7 @@ public class BackroomsStoryProject {
 		}
 		else if (current_level.equals("Level 3")) {
 			current_entity = "SKIN-STEALER";
-			entity_health = 120;
+			entity_health = 140;
 			entity_type = "Hostile";
 
 			getEntityDescription(current_entity, entity_health, entity_type);
@@ -296,18 +309,26 @@ public class BackroomsStoryProject {
 			System.out.println("\nA recently deceased wanderer of the backrooms." + 
 				"\nThey do not pose a significant threat and can be taken down easily." + 
 				"\nHowever, be cautious when fighting more than one at a time.");
-		else if (current_entity.equals("SMILER"))
+		else if (current_entity.equals("SMILER")) // Source: https://backrooms.fandom.com/wiki/Smilers
 			System.out.println("\nSmilers are well known by their eerie luminescent smile." + 
 				"\nThey mainly lurk in a level's dark areas. Because of this, it is often difficult to" +
 				"\nidentify the rest of their physical features." + 
 				"\nTherefore, be warned, they are often the most dangerous of entities" +
 				"\nand will attack when provoked.");
-		else if (current_entity.equals("SKIN-STEALER"))
-			System.out.println("\nDescription for Entity 3");
+		else if (current_entity.equals("SKIN-STEALER")) // Source: https://backrooms.fandom.com/wiki/Skin-Stealers
+			System.out.println("\nSkin stealers are hostile entities that will normally attack wanderers" + 
+				"\nwhen in a state of hunger. After killing their victims, they will absorb/eat the victim's" + 
+				"\nflesh by \"wearing\" their skin. These entities are found on most levels and can imitate the " + 
+				"\nvoices of human beings to lure potential victims.");
 		else if (current_entity.equals("Entity 4"))
 			System.out.println("\nDescription for Entity 4");
-		else if (current_entity.equals("DEATHMOTH"))
-			System.out.println("\nDescription for Entity 5");
+		else if (current_entity.equals("DEATHMOTH")) // Source: https://backrooms.fandom.com/wiki/Deathmoths
+			System.out.println("\nDeathmoths resemble that of moths typically found in the normal world" +
+				"\nwith the exception of their much larger appearances." + 
+				"\nAlthough several deathmoths encounters have proven them to be neutral, they can still" + 
+				"\nexhibit hostile tendancies including attacking those who wander close to their hives." + 
+				"\nThese hives are typically found in certain levels and as such, the presence of deathmoths" + 
+				"\nare higher and deadlier.");
 	}
 
 	public static int fightEntity(int health, String[] inventory, String current_entity, 
