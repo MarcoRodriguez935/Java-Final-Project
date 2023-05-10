@@ -260,6 +260,7 @@ public class BackroomsStoryProject {
 	public static void readCommand(String[] inv) {
 		Scanner input = new Scanner(System.in);
 
+		System.out.println("Enter CONTINUE to proceed or CMDS for a list of commands");
 		System.out.print("> ");
 		String command = input.nextLine();
 		command = command.trim();
