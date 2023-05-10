@@ -64,7 +64,37 @@ public class BackroomsStoryProject {
 	  	return;
 	}
 
+	public static void readCommand(String[] inv) {
+		Scanner input = new Scanner(System.in);
 
+		System.out.println("Enter CONTINUE to proceed or CMDS for a list of commands");
+
+		String command = "";
+
+		do {
+			System.out.print("> ");
+			command = input.nextLine();
+			command = command.trim();
+
+			if (command.equalsIgnoreCase("fight") || command.equalsIgnoreCase("flee")) {
+				System.out.println("\nPlayer is not currently engaging an entity\n");
+			}
+			else if (command.equalsIgnoreCase("inventory")) {
+				System.out.println("\nInventory: ");
+				displayList(inv);
+				System.out.println();
+			}
+			else if (command.equals("cmds")) {
+				System.out.println("\nTo proceed: > continue");
+				System.out.println("To fight an entity: > fight");
+				System.out.println("To flee from an entity: > flee");
+				System.out.println("To select an item when prompted: > item_name");
+				System.out.println("To display the inventory: > inventory");
+				System.out.println("To display this list of commands: > cmds");
+				System.out.println();
+			}
+		} while (!command.equalsIgnoreCase("continue"));
+	}
 
 	public static void currentStats(String player_name, int health, String[] inventory) {
 
@@ -255,41 +285,6 @@ public class BackroomsStoryProject {
 			}
 		}
 		return player_has_item;
-	}
-	
-	public static void readCommand(String[] inv) {
-		Scanner input = new Scanner(System.in);
-
-		System.out.println("Enter CONTINUE to proceed or CMDS for a list of commands");
-		System.out.print("> ");
-		String command = input.nextLine();
-		command = command.trim();
-
-		String heal;
-
-		while (!command.equalsIgnoreCase("continue")) {
-			System.out.print("> ");
-			command = input.nextLine();
-			command = command.trim();
-
-			if (command.equalsIgnoreCase("fight") || command.equalsIgnoreCase("flee")) {
-				System.out.println("\nPlayer is not currently engaging an entity\n");
-			}
-			else if (command.equalsIgnoreCase("inventory")) {
-				System.out.println("\nInventory: ");
-				displayList(inv);
-				System.out.println();
-			}
-			else if (command.equals("cmds")) {
-				System.out.println("\nTo proceed: > continue");
-				System.out.println("To fight an entity: > fight");
-				System.out.println("To flee from an entity: > flee");
-				System.out.println("To select an item when prompted: > item_name");
-				System.out.println("To display the inventory: > inventory");
-				System.out.println("To display this list of commands: > cmds");
-				System.out.println();
-			}
-		}
 	}
 	
 	// entityEncounter(health, inventory, current_level, entities_encountered);
