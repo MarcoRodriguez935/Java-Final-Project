@@ -167,8 +167,8 @@ public class BackroomsStoryProject {
 		if (item_type.equals("weapons")) {
 			System.out.println("\nWEAPONS: ");
 			for (int i = 0; i < inv.length; i++) 
-				if (inv[i].equalsIgnoreCase("fists") || inv[i].equalsIgnoreCase("weapon1") ||
-					inv[i].equalsIgnoreCase("weapon2"))
+				if (inv[i].equalsIgnoreCase("fists") || inv[i].equalsIgnoreCase("pocket knife") ||
+					inv[i].equalsIgnoreCase("baseball bat"))
 				System.out.println(" - " + inv[i]);
 		}
 		else if (item_type.equals("health")) {
