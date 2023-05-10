@@ -393,34 +393,6 @@ public class BackroomsStoryProject {
 		return element_list;
 	}
 
-	public static void runHelpProgram() {
-	  	System.out.println("\n----------Description----------");
-	  	System.out.println("This game is heavily influenced by the expansive lore of the backrooms." + 
-	  	    "\nIn short, the backrooms is an alternate dimension that victims enter by\n\"noclipping\"" +
-	  	    " out of our reality.\nThe backrooms are characterized by its almost limitless number of random levels."
-	  	    + "\nThese levels can lead to subequent ones leading to your escape." + 
-	  	    "\nOr, if you're unlucky, can take you to undesirable locations.");
-	  	System.out.println("\n----------Instructions----------");
-	  	System.out.println("This project mainly incorporates the survival aspect of the backrooms" + 
-	  			"\nYou will have to traverse through each level and fight any entities you encounter." + 
-	  			"\nThese entities may vary in difficulty and clues will be provided in their description/health" + 
-	  			"\nthat will advise whether it is best to flee or fight." +
-	  			"\nIn the end, there will be a final level in which you can either escape the backrooms or be" + 
-	  			"\nstuck there forever");
-	  	System.out.println("\n----------GAMEPLAY----------");
-	  	System.out.println("To enter a command/action, enter the desired player action following the" + 
-	     		"\n\">\" character");
-	  	System.out.println("\nLIST OF COMMANDS:");
-	  	System.out.println("To proceed with the story: > continue");
-	  	System.out.println("To fight an entity: > fight");
-	  	System.out.println("To flee from an entity: > flee");
-	  	System.out.println("To select an item when prompted: > item_name");
-	  	System.out.println("To display the inventory: > inventory");
-	  	System.out.println("To display the command list: > cmds");
-
-	  	System.exit(1);
-	}
-
 	public static String readName() {
 	  	Scanner input = new Scanner(System.in);
 
@@ -500,5 +472,33 @@ public class BackroomsStoryProject {
 		System.out.println(" ▒ ▒ ░░ ░ ░ ░ ▒  ░░░ ░ ░       ░  ░  ░  ░ ░         ░   ▒  ░░         ░   ░ ░  ░ ");
 		System.out.println(" ░ ░        ░ ░    ░           ░  ░     ░ ░ ░           ░  ░          ░  ░  ░    ");
 		System.out.println(" ░ ░                                      ░                               ░      ");
+	}
+	
+	public static void runHelpProgram() {
+	  	System.out.println("\n----------Description----------");
+	  	System.out.println("This game is heavily influenced by the expansive lore of the backrooms." + 
+	  	    "\nIn short, the backrooms is an alternate dimension that victims enter by\n\"noclipping\"" +
+	  	    " out of our reality.\nThe backrooms are characterized by its almost limitless number of random levels."
+	  	    + "\nThese levels can lead to subequent ones leading to your escape." + 
+	  	    "\nOr, if you're unlucky, can take you to undesirable locations.");
+	  	System.out.println("\n----------Instructions----------");
+	  	System.out.println("This project mainly incorporates the survival aspect of the backrooms" + 
+	  			"\nYou will have to traverse through each level and fight any entities you encounter." + 
+	  			"\nThese entities may vary in difficulty and clues will be provided in their description/health" + 
+	  			"\nthat will advise whether it is best to flee or fight." +
+	  			"\nIn the end, there will be a final level in which you can either escape the backrooms or be" + 
+	  			"\nstuck there forever");
+	  	System.out.println("\n----------GAMEPLAY----------");
+	  	System.out.println("To enter a command/action, enter the desired player action following the" + 
+	     		"\n\">\" character");
+	  	System.out.println("\nLIST OF COMMANDS:");
+	  	System.out.println("To proceed with the story: > continue");
+	  	System.out.println("To fight an entity: > fight");
+	  	System.out.println("To flee from an entity: > flee");
+	  	System.out.println("To select an item when prompted: > item_name");
+	  	System.out.println("To display the inventory: > inventory");
+	  	System.out.println("To display the command list: > cmds");
+
+	  	System.exit(1);
 	}
 }
