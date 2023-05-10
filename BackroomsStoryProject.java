@@ -329,9 +329,9 @@ public class BackroomsStoryProject {
 			return health;
 		}
 		else if (current_level.equals("Level 4")) {
-			current_entity = "Entity 4";
+			current_entity = "HOUND";
 			entity_health = 120;
-			entity_type = "Neutral";
+			entity_type = "Hostile";
 
 			getEntityDescription(current_entity, entity_health, entity_type);
 			updateElementsPassed(entities_encountered, current_entity);
@@ -376,8 +376,11 @@ public class BackroomsStoryProject {
 				"\nwhen in a state of hunger. After killing their victims, they will absorb/eat the victim's" + 
 				"\nflesh by \"wearing\" their skin. These entities are found on most levels and can imitate the " + 
 				"\nvoices of human beings to lure potential victims.");
-		else if (current_entity.equals("Entity 4"))
-			System.out.println("\nDescription for Entity 4");
+		else if (current_entity.equals("HOUND")) // Source: https://backrooms.fandom.com/wiki/Hounds
+			System.out.println("\nHounds are hostile humanoids with animal-like characteristics." + 
+				"\nThey are commonly found throughout much of the backrooms, are generally hostile" +
+				"\ntowards wanderers, and will attack on sight. Be warned, like other entities, they are deadly." +
+				"\nAs such, it is best to run or fend them off with long-ranged weapons.");
 		else if (current_entity.equals("DEATHMOTH")) // Source: https://backrooms.fandom.com/wiki/Deathmoths
 			System.out.println("\nDeathmoths resemble that of moths typically found in the normal world" +
 				"\nwith the exception of their much larger appearances." + 
