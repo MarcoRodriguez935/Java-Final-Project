@@ -224,6 +224,19 @@ public class BackroomsStoryProject {
 			return false;
 	}
 	
+	public static boolean hasHealthItems(String[] inv) {
+		boolean has_health_items = false;
+
+		for (int i = 0; i < inv.length; i++) {
+			if (inv[i].equalsIgnoreCase("almond water") || inv[i].equalsIgnoreCase("bandage")
+				|| inv[i].equalsIgnoreCase("health pack")) {
+				has_health_items = true;
+				break;
+			}	
+		}
+		return has_health_items;
+	}
+	
 	public static String chooseItem() {
 		Scanner input = new Scanner(System.in);
 		System.out.print("> ");
