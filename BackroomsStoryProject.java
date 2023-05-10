@@ -195,8 +195,8 @@ public class BackroomsStoryProject {
 		if (item_type.equals("weapons")) {
 			System.out.println("\nWEAPONS: ");
 			for (int i = 0; i < inv.length; i++) 
-				if (inv[i].equalsIgnoreCase("fists") || inv[i].equalsIgnoreCase("pocket knife") ||
-					inv[i].equalsIgnoreCase("baseball bat"))
+				if (inv[i].equalsIgnoreCase("fists") || inv[i].equalsIgnoreCase("metal pipe") ||
+					inv[i].equalsIgnoreCase("chair leg"))
 				System.out.println(" - " + inv[i]);
 		}
 		else if (item_type.equals("health")) {
@@ -209,8 +209,8 @@ public class BackroomsStoryProject {
 	}
 	
 	public static boolean isWeapon(String weapon) {
-		if (weapon.equalsIgnoreCase("fists") || weapon.equalsIgnoreCase("pocket knife") 
-			|| weapon.equalsIgnoreCase("baseball bat"))
+		if (weapon.equalsIgnoreCase("fists") || weapon.equalsIgnoreCase("metal pipe") 
+			|| weapon.equalsIgnoreCase("chair leg"))
 			return true;
 		else 
 			return false;
