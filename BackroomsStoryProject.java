@@ -27,7 +27,7 @@ public class BackroomsStoryProject {
 		// Stats to be updated every level
 		int health = 100;
 
-		String[] inventory = {"FISTS", "EMPTY", "EMPTY", "EMPTY", "EMPTY", "EMPTY"};
+		String[] inventory = {"FISTS", "--EMPTY--", "--EMPTY--", "--EMPTY--", "--EMPTY--", "--EMPTY--"};
 
 
 		String[] levels_passed = {"???", "???", "???", "???", "???", "???"};
@@ -131,14 +131,17 @@ public class BackroomsStoryProject {
 		}
 		if (health_item.equalsIgnoreCase("almond water")) {
 			health += 20;
+			removeFromInventory(inventory, health_item);
 			System.out.println("\nHealth Added: +20%");
 		}
 		else if (health_item.equalsIgnoreCase("bandage")) {
 			health += 40;
+			removeFromInventory(inventory, health_item);
 			System.out.println("\nHealth Added: +40%");
 		}
 		else if (health_item.equalsIgnoreCase("health pack")) {
 			health += 50;
+			removeFromInventory(inventory, health_item);
 			System.out.println("\nHealth Added: +50%");
 		}
 
@@ -146,6 +149,7 @@ public class BackroomsStoryProject {
 			health = 100;
 
 		System.out.println("\nCurrent Health: " + health + "%");
+		System.out.println();
 		return health;
 	}
 
@@ -197,7 +201,7 @@ public class BackroomsStoryProject {
 
 	public static String[] addToInventory(String[] inv, String addition) {
 		for (int i = 0; i < inv.length; i++) {
-			if (inv[i].equals("EMPTY")) {
+			if (inv[i].equals("--EMPTY--")) {
 				inv[i] = addition;
 				break;
 			}
@@ -208,12 +212,12 @@ public class BackroomsStoryProject {
 	public static String[] removeFromInventory(String[] inv, String remove) {
 
 		if (remove.equals("FISTS")) {
-			System.out.println("Cannot drop item: " + remove);
+			System.out.println("Cannot drop item: FISTS");
 		}
 		else {
 			for (int i = 0; i < inv.length; i++) {
-				if (inv[i].equals(remove)) {
-					inv[i] = "EMPTY";
+				if (inv[i].equalsIgnoreCase(remove)) {
+					inv[i] = "--EMPTY--";
 					break;
 				}
 			}
