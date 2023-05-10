@@ -180,19 +180,27 @@ public class BackroomsStoryProject {
 		}
 	}
 	
+	public static boolean isWeapon(String weapon) {
+		if (weapon.equalsIgnoreCase("fists") || weapon.equalsIgnoreCase("pocket knife") 
+			|| weapon.equalsIgnoreCase("baseball bat"))
+			return true;
+		else 
+			return false;
+	}
+	
+	public static boolean isHealthItem(String item) {
+		if (item.equalsIgnoreCase("almond water") || item.equalsIgnoreCase("bandage")
+			|| item.equalsIgnoreCase("health pack"))
+			return true;
+		else
+			return false;
+	}
+	
 	public static String chooseItem() {
 		Scanner input = new Scanner(System.in);
 		System.out.print("> ");
 		String item = input.nextLine();
 		item = item.trim();
-
-		while (!item.equalsIgnoreCase("fists") && !item.equalsIgnoreCase("weapon1")
-			&& !item.equalsIgnoreCase("weapon2") && !item.equalsIgnoreCase("almond water") 
-			&& !item.equalsIgnoreCase("bandage") && !item.equalsIgnoreCase("health pack")) {
-			System.out.print("> ");
-			item = input.nextLine();
-			item = item.trim();
-		}
 
 		return item;
 	}
@@ -364,7 +372,7 @@ public class BackroomsStoryProject {
 			System.out.println("\nChoose an item:");
 			weapon = chooseItem();
 
-			while (!verifyItem(inventory, weapon)) {
+			while (!verifyItem(inventory, weapon) || !isWeapon(weapon)) {
 				weapon = chooseItem();
 			}
 
