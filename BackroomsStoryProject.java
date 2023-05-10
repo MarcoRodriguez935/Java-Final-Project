@@ -89,7 +89,35 @@ public class BackroomsStoryProject {
 			return true;
 		else 
 			return false;
-	} 	
+	}
+	
+	public static int heal(int health, String[] inventory) {
+		displayInventoryItems(inventory, "health");
+		System.out.println("\nChoose an item:");
+		String health_item = chooseItem();
+
+		while (!verifyItem(inventory, health_item) || !isHealthItem(health_item)) {
+			health_item = chooseItem();
+		}
+		if (health_item.equalsIgnoreCase("almond water")) {
+			health += 20;
+			System.out.println("\nHealth Added: +20%");
+		}
+		else if (health_item.equalsIgnoreCase("bandage")) {
+			health += 40;
+			System.out.println("\nHealth Added: +40%");
+		}
+		else if (health_item.equalsIgnoreCase("health pack")) {
+			health += 50;
+			System.out.println("\nHealth Added: +50%");
+		}
+
+		if (health > 100) 
+			health = 100;
+
+		System.out.println("\nCurrent Health: " + health + "%");
+		return health;
+	}
 
 	public static void displayFinalResults(String name, int health, String[] inventory, 
 	  	String[] entities_encountered, String[] levels_passed) {
@@ -259,8 +287,8 @@ public class BackroomsStoryProject {
 		String entity_type = ""; //Hostile, or Safe
 
 		if (current_level.equals("Level 1")) {
-			current_entity = "REANIMATED CORPSE";
-			entity_health = 60;
+			current_entity = "LIVING MANNEQUIN";
+			entity_health = 50;
 			entity_type = "Hostile";
 
 			getEntityDescription(current_entity, entity_health, entity_type);
@@ -323,10 +351,11 @@ public class BackroomsStoryProject {
 		System.out.println("\nENTITY HEALTH: " + entity_health + "%");
 		System.out.println("\nENTITY TYPE: " + entity_type);
 
-		if (current_entity.equals("REANIMATED CORPSE"))
-			System.out.println("\nA recently deceased wanderer of the backrooms." + 
-				"\nThey do not pose a significant threat and can be taken down easily." + 
-				"\nHowever, be cautious when fighting more than one at a time.");
+		if (current_entity.equals("LIVING MANNEQUIN"))
+			System.out.println(
+				"\nA mannequin that resembles those typically found in department stores." + 
+				"\nThey are normally hostile and will attack on sight. However, they are" +
+				"\ngenerally easy to dispatch and can drop useful items.");
 		else if (current_entity.equals("SMILER")) // Source: https://backrooms.fandom.com/wiki/Smilers
 			System.out.println("\nSmilers are well known by their eerie luminescent smile." + 
 				"\nThey mainly lurk in a level's dark areas. Because of this, it is often difficult to" +
