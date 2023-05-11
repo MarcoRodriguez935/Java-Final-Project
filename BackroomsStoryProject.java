@@ -115,7 +115,7 @@ public class BackroomsStoryProject {
 	}
 	
 	public static boolean lowHealth(int health) {
-		if (health < 50)
+		if (health < 50 && health > 0)
 			return true;
 		else 
 			return false;
