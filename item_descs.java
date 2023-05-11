@@ -104,6 +104,10 @@ public class item_descs{
 		String item_drop = "You dropped ";
 		return item_drop;
 	}
+	public static String attemptItemReturn(){
+		String pick_up_again = "You try to pick up that item again, but somehow the item is not in this plane of existence anymore.";
+		return pick_up_again;
+	}
 	public static String[] entityEncounter(){
 		String[] entity_encounter = new String[5];
 		entity_encounter[0] = "The moment you step into this new room, your heart drops as you come face to face \n"+
