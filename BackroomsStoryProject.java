@@ -345,7 +345,7 @@ public class BackroomsStoryProject {
 			getEntityDescription(current_entity, entity_health, entity_type);
 			updateElementsPassed(entities_encountered, current_entity);
 
-			health = fightEntity(health, inventory, current_entity, entity_health);
+			health = fightEntity(health, inventory, current_entity);
 			return health;
 		}	
 		else if (current_level.equals("Level 2")) {
@@ -356,7 +356,7 @@ public class BackroomsStoryProject {
 			getEntityDescription(current_entity, entity_health, entity_type);
 			updateElementsPassed(entities_encountered, current_entity);
 
-			health = fightEntity(health, inventory, current_entity, entity_health);
+			health = fightEntity(health, inventory, current_entity);
 			return health;
 		}
 		else if (current_level.equals("Level 3")) {
@@ -367,7 +367,7 @@ public class BackroomsStoryProject {
 			getEntityDescription(current_entity, entity_health, entity_type);
 			updateElementsPassed(entities_encountered, current_entity);
 
-			health = fightEntity(health, inventory, current_entity, entity_health);
+			health = fightEntity(health, inventory, current_entity);
 			return health;
 		}
 		else if (current_level.equals("Level 4")) {
@@ -378,7 +378,7 @@ public class BackroomsStoryProject {
 			getEntityDescription(current_entity, entity_health, entity_type);
 			updateElementsPassed(entities_encountered, current_entity);
 
-			health = fightEntity(health, inventory, current_entity, entity_health);
+			health = fightEntity(health, inventory, current_entity);
 			return health;
 		}
 		else if (current_level.equals("Level 5")) {
@@ -389,7 +389,7 @@ public class BackroomsStoryProject {
 			getEntityDescription(current_entity, entity_health, entity_type);
 			updateElementsPassed(entities_encountered, current_entity);
 
-			health = fightEntity(health, inventory, current_entity, entity_health);
+			health = fightEntity(health, inventory, current_entity);
 			return health;
 		}
 		return health;
@@ -432,8 +432,7 @@ public class BackroomsStoryProject {
 				"\nare higher and deadlier.");
 	}
 
-	public static int fightEntity(int health, String[] inventory, String current_entity, 
-		int entity_health) {
+	public static int fightEntity(int health, String[] inventory, String current_entity) {
 		Scanner input = new Scanner(System.in);
 
 		System.out.println("\nDo you FLEE or FIGHT?");
