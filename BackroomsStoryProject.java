@@ -63,7 +63,8 @@ public class BackroomsStoryProject {
 	public static void final_level(String name, int health, String[] inventory) {
 	  	return;
 	}
-
+	
+	// ---------- PLAYER STATS / GAMEPLAY METHODS
 	public static void readCommand(String[] inv) {
 		Scanner input = new Scanner(System.in);
 
@@ -145,6 +146,16 @@ public class BackroomsStoryProject {
 	  	}
 	  	else 
 	  		victoryScreen();
+	}
+	
+	public static String[] updateElementsPassed(String[] element_list, String current_element) {
+		for (int i = 0; i < element_list.length; i++) {
+			if (element_list[i].equals("???")) {
+				element_list[i] = current_element;
+				break;
+			}	
+		}
+		return element_list;
 	}
 
 	public static boolean playerIsDead(int health) {
@@ -308,6 +319,8 @@ public class BackroomsStoryProject {
 		else
 			return false;
 	}
+	
+	// ---------- ENTITY METHODS ----------
 	
 	// entityEncounter(health, inventory, current_level, entities_encountered);
 	public static int entityEncounter(int health, String[] inventory, String current_level, 
@@ -552,16 +565,8 @@ public class BackroomsStoryProject {
 		return health;
 	}
 	
-	public static String[] updateElementsPassed(String[] element_list, String current_element) {
-		for (int i = 0; i < element_list.length; i++) {
-			if (element_list[i].equals("???")) {
-				element_list[i] = current_element;
-				break;
-			}	
-		}
-		return element_list;
-	}
-
+	// ---------- MISC ----------
+	
 	public static String readName() {
 	  	Scanner input = new Scanner(System.in);
 
