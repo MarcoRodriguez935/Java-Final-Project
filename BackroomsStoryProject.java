@@ -64,7 +64,8 @@ public class BackroomsStoryProject {
 	  	return;
 	}
 	
-	// ---------- PLAYER STATS / GAMEPLAY METHODS
+	// ---------- PLAYER STATS / GAMEPLAY METHODS ----------
+	
 	public static void readCommand(String[] inv) {
 		Scanner input = new Scanner(System.in);
 
@@ -95,6 +96,15 @@ public class BackroomsStoryProject {
 				System.out.println();
 			}
 		} while (!command.equalsIgnoreCase("continue"));
+	}
+	
+	public static String chooseItem() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("> ");
+		String item = input.nextLine();
+		item = item.trim();
+
+		return item;
 	}
 
 	public static void currentStats(String player_name, int health, String[] inventory) {
@@ -289,15 +299,6 @@ public class BackroomsStoryProject {
 		return has_health_items;
 	}
 	
-	public static String chooseItem() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("> ");
-		String item = input.nextLine();
-		item = item.trim();
-
-		return item;
-	}
-	
 	public static boolean verifyItem(String[] inv, String item) {
 		boolean player_has_item = false;
 		for (int i = 0; i < inv.length; i++) {
@@ -320,7 +321,7 @@ public class BackroomsStoryProject {
 			return false;
 	}
 	
-	// ---------- ENTITY METHODS ----------
+	// ---------- ENTITIES METHODS ----------
 	
 	// entityEncounter(health, inventory, current_level, entities_encountered);
 	public static int entityEncounter(int health, String[] inventory, String current_level, 
@@ -565,7 +566,7 @@ public class BackroomsStoryProject {
 		return health;
 	}
 	
-	// ---------- MISC ----------
+	// ---------- MISC METHODS ----------
 	
 	public static String readName() {
 	  	Scanner input = new Scanner(System.in);
