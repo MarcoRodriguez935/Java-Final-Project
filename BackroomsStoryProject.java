@@ -86,12 +86,16 @@ public class BackroomsStoryProject {
 				displayList(inv);
 				System.out.println();
 			}
+			else if (command.equalsIgnoreCase("cry")) {
+				System.out.println("TODO");
+			}
 			else if (command.equals("cmds")) {
 				System.out.println("\nTo proceed: > continue");
 				System.out.println("To fight an entity: > fight");
 				System.out.println("To flee from an entity: > flee");
 				System.out.println("To select an item when prompted: > item_name");
 				System.out.println("To display the inventory: > inventory");
+				System.out.println("To cry: > cry");
 				System.out.println("To display this list of commands: > cmds");
 				System.out.println();
 			}
