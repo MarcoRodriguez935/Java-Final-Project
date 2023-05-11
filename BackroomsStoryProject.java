@@ -106,53 +106,7 @@ public class BackroomsStoryProject {
 
 		System.out.println();
 	}
-
-	public static boolean playerIsDead(int health) {
-		if (health <= 0) 
-		  	return true;
-		else 
-		  	return false;
-	}
 	
-	public static boolean lowHealth(int health) {
-		if (health < 50 && health > 0)
-			return true;
-		else 
-			return false;
-	}
-	
-	public static int heal(int health, String[] inventory) {
-		displayInventoryItems(inventory, "health");
-		System.out.println("\nChoose an item:");
-		String health_item = chooseItem();
-
-		while (!verifyItem(inventory, health_item) || !isHealthItem(health_item)) {
-			health_item = chooseItem();
-		}
-		if (health_item.equalsIgnoreCase("almond water")) {
-			health += 20;
-			removeFromInventory(inventory, health_item);
-			System.out.println("\nHealth Added: +20%");
-		}
-		else if (health_item.equalsIgnoreCase("bandage")) {
-			health += 40;
-			removeFromInventory(inventory, health_item);
-			System.out.println("\nHealth Added: +40%");
-		}
-		else if (health_item.equalsIgnoreCase("health pack")) {
-			health += 50;
-			removeFromInventory(inventory, health_item);
-			System.out.println("\nHealth Added: +50%");
-		}
-
-		if (health > 100) 
-			health = 100;
-
-		System.out.println("\nCurrent Health: " + health + "%");
-		System.out.println();
-		return health;
-	}
-
 	public static void displayFinalResults(String name, int health, String[] inventory, 
 	  	String[] entities_encountered, String[] levels_passed) {
 
@@ -193,6 +147,57 @@ public class BackroomsStoryProject {
 	  		victoryScreen();
 	}
 
+	public static boolean playerIsDead(int health) {
+		if (health <= 0) 
+		  	return true;
+		else 
+		  	return false;
+	}
+	
+	public static boolean lowHealth(int health) {
+		if (health < 50 && health > 0)
+			return true;
+		else 
+			return false;
+	}
+	
+	public static int heal(int health, String[] inventory) {
+		displayInventoryItems(inventory, "health");
+		System.out.println("\nChoose an item:");
+		String health_item = chooseItem();
+
+		while (!verifyItem(inventory, health_item) || !isHealthItem(health_item)) {
+			health_item = chooseItem();
+		}
+		if (health_item.equalsIgnoreCase("almond water")) {
+			health += 20;
+			removeFromInventory(inventory, health_item);
+			System.out.println("\nHEALTH ADDED: +20%");
+		}
+		else if (health_item.equalsIgnoreCase("backshroom")) {
+			health += 30;
+			removeFromInventory(inventory, health_item);
+			System.out.println("\nHEALTH ADDED: +30%");
+		}
+		else if (health_item.equalsIgnoreCase("bandage")) {
+			health += 40;
+			removeFromInventory(inventory, health_item);
+			System.out.println("\nHEALTH ADDED: +40%");
+		}
+		else if (health_item.equalsIgnoreCase("health pack")) {
+			health += 50;
+			removeFromInventory(inventory, health_item);
+			System.out.println("\nHEALTH ADDED: +50%");
+		}
+
+		if (health > 100) 
+			health = 100;
+
+		System.out.println("\nCurrent Health: " + health + "%");
+		System.out.println();
+		return health;
+	}
+
 	public static void displayList(String[] list) {
 		for (int i = 0; i < list.length; i++) {
 				System.out.println(" " + (i+1) + ")  " + list[i]);
@@ -226,33 +231,35 @@ public class BackroomsStoryProject {
 	}
 	
 	public static void displayInventoryItems(String[] inv, String item_type) {
-		if (item_type.equals("weapons")) {
+		if (item_type.equalsIgnoreCase("weapons")) {
 			System.out.println("\nWEAPONS: ");
 			for (int i = 0; i < inv.length; i++) 
 				if (inv[i].equalsIgnoreCase("fists") || inv[i].equalsIgnoreCase("metal pipe") ||
-					inv[i].equalsIgnoreCase("chair leg") || inv[i].equalsIgnoreCase("baseball bat"))
+					inv[i].equalsIgnoreCase("chair leg") || inv[i].equalsIgnoreCase("tennis racket") ||
+					inv[i].equalsIgnoreCase("baseball bat"))
 				System.out.println(" - " + inv[i]);
 		}
-		else if (item_type.equals("health")) {
+		else if (item_type.equalsIgnoreCase("health")) {
 			System.out.println("\nHEALTH ITEMS: ");
 			for (int i = 0; i < inv.length; i++) 
 				if (inv[i].equalsIgnoreCase("almond water") || inv[i].equalsIgnoreCase("bandage") ||
-					inv[i].equalsIgnoreCase("health pack"))
+					inv[i].equalsIgnoreCase("backshroom") || inv[i].equalsIgnoreCase("health pack"))
 			System.out.println(" (+) " + inv[i]);
 		}
 	}
 	
 	public static boolean isWeapon(String weapon) {
 		if (weapon.equalsIgnoreCase("fists") || weapon.equalsIgnoreCase("metal pipe") 
-			|| weapon.equalsIgnoreCase("chair leg") || weapon.equalsIgnoreCase("baseball bat"))
+			|| weapon.equalsIgnoreCase("chair leg") || weapon.equalsIgnoreCase("tennis racket") ||
+			weapon.equalsIgnoreCase("baseball bat"))
 			return true;
 		else 
 			return false;
 	}
 	
 	public static boolean isHealthItem(String item) {
-		if (item.equalsIgnoreCase("almond water") || item.equalsIgnoreCase("bandage")
-			|| item.equalsIgnoreCase("health pack"))
+		if (item.equalsIgnoreCase("almond water") || item.equalsIgnoreCase("bandage") ||
+			item.equalsIgnoreCase("backshroom") || item.equalsIgnoreCase("health pack"))
 			return true;
 		else
 			return false;
@@ -262,8 +269,8 @@ public class BackroomsStoryProject {
 		boolean has_health_items = false;
 
 		for (int i = 0; i < inv.length; i++) {
-			if (inv[i].equalsIgnoreCase("almond water") || inv[i].equalsIgnoreCase("bandage")
-				|| inv[i].equalsIgnoreCase("health pack")) {
+			if (inv[i].equalsIgnoreCase("almond water") || inv[i].equalsIgnoreCase("bandage") ||
+				inv[i].equalsIgnoreCase("backshroom") || inv[i].equalsIgnoreCase("health pack")) {
 				has_health_items = true;
 				break;
 			}	
@@ -289,6 +296,17 @@ public class BackroomsStoryProject {
 			}
 		}
 		return player_has_item;
+	}
+	
+	public static boolean isValidItem(String item) {
+		if (item.equalsIgnoreCase("metal pipe") || item.equalsIgnoreCase("chair leg") ||
+			item.equalsIgnoreCase("tennis racket") || item.equalsIgnoreCase("baseball bat") ||
+			item.equalsIgnoreCase("almond water") || item.equalsIgnoreCase("bandage") ||
+			item.equalsIgnoreCase("backshroom") || item.equalsIgnoreCase("health pack")) {
+			return true;
+		} 
+		else
+			return false;
 	}
 	
 	// entityEncounter(health, inventory, current_level, entities_encountered);
@@ -421,9 +439,115 @@ public class BackroomsStoryProject {
 				weapon = chooseItem();
 			}
 
-			System.out.println("CONTINUE");
+			health = getFightOutcome(health, weapon, current_entity);
 
 		}
+		else if (cmd.equalsIgnoreCase("flee")) {
+			health = getFleeOutcome(health, current_entity);
+		}
+
+		return health;
+	}
+	
+	public static int getFightOutcome(int health, String weapon, String current_entity) {
+
+		int health_lost = 0;
+
+		// mannequin outcomes
+		if (current_entity.equals("LIVING MANNEQUIN")) {
+			if (weapon.equalsIgnoreCase("fists"))
+				health_lost += (int)(Math.random() * (10 - 5 + 1) + 5);
+			else if (weapon.equalsIgnoreCase("metal pipe") || weapon.equalsIgnoreCase("chair leg") ||
+				weapon.equalsIgnoreCase("tennis racket") || weapon.equalsIgnoreCase("baseball bat"))
+				health_lost += 0;
+		}
+
+		// smiler outcomes
+		else if (current_entity.equalsIgnoreCase("SMILER")) {
+			if (weapon.equalsIgnoreCase("fists") || weapon.equalsIgnoreCase("metal pipe") ||
+				weapon.equalsIgnoreCase("chair leg") || weapon.equalsIgnoreCase("tennis racket") ||
+				weapon.equalsIgnoreCase("baseball bat"))
+				health_lost += (int)(Math.random() * (90 - 75 + 1) + 75);
+		}
+
+		// skin-stealer outcomes
+		else if (current_entity.equalsIgnoreCase("SKIN-STEALER")) {
+			if (weapon.equalsIgnoreCase("fists"))
+				health_lost += (int)(Math.random() * (50 - 40 + 1) + 40);
+			else if (weapon.equalsIgnoreCase("chair leg") || weapon.equalsIgnoreCase("tennis racket"))
+				health_lost += (int)(Math.random() * (40 - 35 + 1) + 35);
+			else if (weapon.equalsIgnoreCase("metal pipe") || weapon.equalsIgnoreCase("baseball bat"))
+				health_lost += (int)(Math.random() * (25 - 20 + 1) + 20);
+		}
+
+		// hound outcomes
+		else if (current_entity.equalsIgnoreCase("HOUND")) {
+			if (weapon.equalsIgnoreCase("fists"))
+				health_lost += (int)(Math.random() * (50 - 45 + 1) + 45);
+			else if (weapon.equalsIgnoreCase("chair leg") || weapon.equalsIgnoreCase("tennis racket"))
+				health_lost += (int)(Math.random() * (30 - 25 + 1) + 25);
+			else if (weapon.equalsIgnoreCase("metal pipe") || weapon.equalsIgnoreCase("baseball bat"))
+				health_lost += (int)(Math.random() * (15 - 10 + 1) + 10);
+		}
+
+		else if (current_entity.equalsIgnoreCase("DEATHMOTH")) {
+			if (weapon.equalsIgnoreCase("fists"))
+				health_lost += (int)(Math.random() * (60 - 55 + 1) + 55);
+			else if (weapon.equalsIgnoreCase("chair leg") || weapon.equalsIgnoreCase("tennis racket"))
+				health_lost += (int)(Math.random() * (35 - 30 + 1) + 30);
+			else if (weapon.equalsIgnoreCase("metal pipe") || weapon.equalsIgnoreCase("baseball bat"))
+				health_lost += (int)(Math.random() * (15 - 10 + 1) + 10);
+		}
+
+		System.out.println("\nHEALTH LOST: -" + health_lost + "%");
+
+		health -= health_lost;
+
+		if (playerIsDead(health)) {
+			System.out.println("\nYou did not survive.\n");
+			return health;
+		}
+		else {
+			if (health >= 90)
+				System.out.println("\nYou successfully dispatched the " + current_entity + "." +
+					"\nYou may now proceed\n");
+			else if (health >= 60)
+				System.out.println("\nYou were able to fend off the " + current_entity + "." +
+					"\nProceed with caution\n");
+			else if (health >= 30)
+				System.out.println("\nYou fought the " + current_entity + "." +
+					"\nAlthough there was an struggle, at least you're still in one piece\n");
+			else if (health >= 15)
+				System.out.println("\nYou won, but you can't keep this up for much longer\n");
+			else if (health > 0) 
+				System.out.println("\nYou underestimated it");
+		}
+		return health;	
+	}
+	
+	public static int getFleeOutcome(int health, String current_entity) {
+		// flee outcomes
+		if (current_entity.equals("SMILER"))
+			System.out.println("\nWise choice\n");
+
+		else if (current_entity.equalsIgnoreCase("DEATHMOTH")) {
+			System.out.println("\nDeathmoths can fly. It outpaced you but you were able to lose it during the" +
+				"struggle\n");
+			int health_lost = (int)(Math.random() * (15 - 10 + 1) + 10);
+			health -= health_lost;
+			System.out.println("\nHEALTH LOST: -" + (health_lost) + "%");
+		}
+
+		else if (current_entity.equalsIgnoreCase("LIVING MANNEQUIN"))
+			System.out.println("\nYou successfully ran from the mannequin." +
+				"\nBut remember, they are also easy to take down\n");
+
+		else if (current_entity.equalsIgnoreCase("SKIN-STEALER"))
+			System.out.println("\nRunning was a good choice. Skin-stealers are unpleasant creatures\n");
+
+		else if (current_entity.equalsIgnoreCase("HOUND"))
+			System.out.println("\nYou walked away slowly and stayed calm until you were out of sight." + 
+				"\nAfterwards, you ran as far as you could from the beast.");
 
 		return health;
 	}
