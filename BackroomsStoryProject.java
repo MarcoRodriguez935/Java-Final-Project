@@ -470,7 +470,7 @@ public class BackroomsStoryProject {
 		// mannequin outcomes
 		if (current_entity.equals("LIVING MANNEQUIN")) {
 			if (weapon.equalsIgnoreCase("fists"))
-				health_lost += (int)(Math.random() * (10 - 5 + 1) + 5);
+				health_lost += (int)(Math.random() * (8 - 5 + 1) + 5);
 			else if (weapon.equalsIgnoreCase("metal pipe") || weapon.equalsIgnoreCase("chair leg") ||
 				weapon.equalsIgnoreCase("tennis racket") || weapon.equalsIgnoreCase("baseball bat"))
 				health_lost += 0;
