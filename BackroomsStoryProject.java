@@ -168,6 +168,8 @@ public class BackroomsStoryProject {
 		return element_list;
 	}
 
+	// ---------- HEALTH METHODS ----------
+	
 	public static boolean playerIsDead(int health) {
 		if (health <= 0) 
 		  	return true;
@@ -218,6 +220,8 @@ public class BackroomsStoryProject {
 		System.out.println();
 		return health;
 	}
+	
+	// ---------- INVENTORY / ARRAY METHODS
 
 	public static void displayList(String[] list) {
 		for (int i = 0; i < list.length; i++) {
@@ -268,6 +272,8 @@ public class BackroomsStoryProject {
 			System.out.println(" (+) " + inv[i]);
 		}
 	}
+	
+	// ---------- ITEM METHODS ----------
 	
 	public static boolean isWeapon(String weapon) {
 		if (weapon.equalsIgnoreCase("fists") || weapon.equalsIgnoreCase("metal pipe") 
