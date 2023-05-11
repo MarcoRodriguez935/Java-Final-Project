@@ -221,7 +221,7 @@ public class BackroomsStoryProject {
 		return health;
 	}
 	
-	// ---------- INVENTORY / ARRAY METHODS
+	// ---------- INVENTORY / ARRAY METHODS ----------
 
 	public static void displayList(String[] list) {
 		for (int i = 0; i < list.length; i++) {
