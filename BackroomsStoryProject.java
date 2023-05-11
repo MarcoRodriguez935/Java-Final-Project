@@ -545,11 +545,11 @@ public class BackroomsStoryProject {
 			System.out.println("\nWise choice\n");
 
 		else if (current_entity.equalsIgnoreCase("DEATHMOTH")) {
-			System.out.println("\nDeathmoths can fly. It outpaced you but you were able to lose it during the" +
-				"struggle\n");
-			int health_lost = (int)(Math.random() * (15 - 10 + 1) + 10);
+			int health_lost = (int)(Math.random() * (10 - 7 + 1) + 7);
 			health -= health_lost;
 			System.out.println("\nHEALTH LOST: -" + (health_lost) + "%");
+			System.out.println("\nDeathmoths can fly quickly." + 
+				"\nIt outpaced you but you were able to lose it during the struggle\n");
 		}
 
 		else if (current_entity.equalsIgnoreCase("LIVING MANNEQUIN"))
