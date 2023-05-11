@@ -8,9 +8,11 @@ public class EntitiesMethods {
 
 		String current_entity = "";
 		int entity_health = 0;
-		String entity_type = ""; //Hostile, or Safe
+		String entity_type = ""; //Hostile, or Neutral
 
-		if (current_level.equals("Level 1")) {
+		int r = (int)(Math.random() * (5 - 1 + 1) + 1)
+
+		if (r == 1) {
 			current_entity = "LIVING MANNEQUIN";
 			entity_health = 50;
 			entity_type = "Hostile";
@@ -21,7 +23,7 @@ public class EntitiesMethods {
 			health = fightEntity(health, inventory, current_entity);
 			return health;
 		}	
-		else if (current_level.equals("Level 2")) {
+		else if (r == 2) {
 			current_entity = "SMILER";
 			entity_health = 200;
 			entity_type = "Neutral";
@@ -32,7 +34,7 @@ public class EntitiesMethods {
 			health = fightEntity(health, inventory, current_entity);
 			return health;
 		}
-		else if (current_level.equals("Level 3")) {
+		else if (r == 3) {
 			current_entity = "SKIN-STEALER";
 			entity_health = 140;
 			entity_type = "Hostile";
@@ -43,7 +45,7 @@ public class EntitiesMethods {
 			health = fightEntity(health, inventory, current_entity);
 			return health;
 		}
-		else if (current_level.equals("Level 4")) {
+		else if (r == 4) {
 			current_entity = "HOUND";
 			entity_health = 120;
 			entity_type = "Hostile";
@@ -54,7 +56,7 @@ public class EntitiesMethods {
 			health = fightEntity(health, inventory, current_entity);
 			return health;
 		}
-		else if (current_level.equals("Level 5")) {
+		else if (r == 5) {
 			current_entity = "DEATHMOTH";
 			entity_health = 140;
 			entity_type = "Neutral";
