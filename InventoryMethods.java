@@ -36,7 +36,7 @@ public class InventoryMethods {
 			cmd = cmd.trim();
 
 			while (!cmd.equalsIgnoreCase("add") && !cmd.equalsIgnoreCase("drop")
-				&& !cmd.equalsIgnoreCase("use") && !cmd.equalsIgnoreCase("exit")) {
+				&& !cmd.equalsIgnoreCase("heal") && !cmd.equalsIgnoreCase("exit")) {
 				System.out.print("What would you like to do?: ");
 				cmd = input.nextLine();
 				cmd = cmd.trim();
@@ -48,7 +48,7 @@ public class InventoryMethods {
 			else if (cmd.equalsIgnoreCase("drop")) {
 				removeFromInventory(inventory);
 			}
-			else if (cmd.equalsIgnoreCase("use")) {
+			else if (cmd.equalsIgnoreCase("heal")) {
 				health = heal(health, inventory);
 			}
 			else if (cmd.equalsIgnoreCase("exit")) {
