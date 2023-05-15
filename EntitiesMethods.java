@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-// This is a test for the entities encounters
+// This is a test for the entity encounters
 public class EntitiesMethods {
 	public static void main(String[] args) {
 		String[] entities_encountered = {"???", "???", "???", "???", "???", "???"};
