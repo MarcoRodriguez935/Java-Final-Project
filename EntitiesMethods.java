@@ -10,7 +10,7 @@ public class EntitiesMethods {
 		int entity_health = 0;
 		String entity_type = ""; //Hostile, or Neutral
 
-		int r = (int)(Math.random() * (5 - 1 + 1) + 1)
+		int r = (int)(Math.random() * (5 - 1 + 1) + 1);
 
 		if (r == 1) {
 			current_entity = "LIVING MANNEQUIN";
