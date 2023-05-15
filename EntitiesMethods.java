@@ -143,6 +143,35 @@ public class EntitiesMethods {
 		return health;
 	}
 	
+	public static String chooseItem() {
+		Scanner input = new Scanner(System.in);
+		System.out.print("> ");
+		String item = input.nextLine();
+		item = item.trim();
+
+		return item;
+	}
+	
+	public static boolean verifyItem(String[] inv, String item) {
+		boolean player_has_item = false;
+		for (int i = 0; i < inv.length; i++) {
+			if (inv[i].equalsIgnoreCase(item)) {
+				player_has_item = true;
+				break;
+			}
+		}
+		return player_has_item;
+	}
+	
+	public static boolean isWeapon(String weapon) {
+		if (weapon.equalsIgnoreCase("fists") || weapon.equalsIgnoreCase("metal pipe") 
+			|| weapon.equalsIgnoreCase("chair leg") || weapon.equalsIgnoreCase("tennis racket") ||
+			weapon.equalsIgnoreCase("baseball bat"))
+			return true;
+		else 
+			return false;
+	}
+	
 	public static int getFightOutcome(int health, String weapon, String current_entity) {
 
 		int health_lost = 0;
