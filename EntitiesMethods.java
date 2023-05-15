@@ -1,18 +1,17 @@
 import java.util.Scanner;
 
-// This is a test for the entity encounters
+// This is a test for the entities encounters
 public class EntitiesMethods {
 	public static void main(String[] args) {
-		String[] entities_encountered = {"???", "???", "???", "???", "???", "???"};
+		
 		String[] inventory = {"FISTS", "BASEBALL BAT", "--EMPTY--", "--EMPTY--"};
 		int health = 100;
-		health = entityEncounter(health, inventory, entities_encountered);
+		health = entityEncounter(health, inventory);
 		System.out.println("health: " + health);
 
 	}
 
-	public static int entityEncounter(int health, String[] inventory, 
-		String[] entities_encountered) {
+	public static int entityEncounter(int health, String[] inventory) {
 
 		String current_entity = "";
 		int entity_health = 0;
@@ -26,7 +25,6 @@ public class EntitiesMethods {
 			entity_type = "Hostile";
 
 			getEntityDescription(current_entity, entity_health, entity_type);
-			updateElementsPassed(entities_encountered, current_entity);
 
 			health = fightEntity(health, inventory, current_entity);
 			return health;
@@ -37,7 +35,6 @@ public class EntitiesMethods {
 			entity_type = "Neutral";
 
 			getEntityDescription(current_entity, entity_health, entity_type);
-			updateElementsPassed(entities_encountered, current_entity);
 
 			health = fightEntity(health, inventory, current_entity);
 			return health;
@@ -48,7 +45,6 @@ public class EntitiesMethods {
 			entity_type = "Hostile";
 
 			getEntityDescription(current_entity, entity_health, entity_type);
-			updateElementsPassed(entities_encountered, current_entity);
 
 			health = fightEntity(health, inventory, current_entity);
 			return health;
@@ -59,7 +55,6 @@ public class EntitiesMethods {
 			entity_type = "Hostile";
 
 			getEntityDescription(current_entity, entity_health, entity_type);
-			updateElementsPassed(entities_encountered, current_entity);
 
 			health = fightEntity(health, inventory, current_entity);
 			return health;
@@ -70,7 +65,6 @@ public class EntitiesMethods {
 			entity_type = "Neutral";
 
 			getEntityDescription(current_entity, entity_health, entity_type);
-			updateElementsPassed(entities_encountered, current_entity);
 
 			health = fightEntity(health, inventory, current_entity);
 			return health;
@@ -299,16 +293,6 @@ public class EntitiesMethods {
 					inv[i].equalsIgnoreCase("backshroom") || inv[i].equalsIgnoreCase("health pack"))
 			System.out.println(" (+) " + inv[i]);
 		}
-	}
-
-	public static String[] updateElementsPassed(String[] element_list, String current_element) {
-		for (int i = 0; i < element_list.length; i++) {
-			if (element_list[i].equals("???")) {
-				element_list[i] = current_element;
-				break;
-			}	
-		}
-		return element_list;
 	}
 
 	public static boolean playerIsDead(int health) {
