@@ -1,9 +1,17 @@
+import java.util.Scanner;
+
+// This is a test for the entities encounters
 public class EntitiesMethods {
 	public static void main(String[] args) {
-		
+		String[] entities_encountered = {"???", "???", "???", "???", "???", "???"};
+		String[] inventory = {"FISTS", "BASEBALL BAT", "--EMPTY--", "--EMPTY--"};
+		int health = 100;
+		health = entityEncounter(health, inventory, entities_encountered);
+		System.out.println("health: " + health);
+
 	}
 
-	public static int entityEncounter(int health, String[] inventory, String current_level, 
+	public static int entityEncounter(int health, String[] inventory, 
 		String[] entities_encountered) {
 
 		String current_entity = "";
@@ -273,5 +281,40 @@ public class EntitiesMethods {
 				"\nAfterwards, you ran as far as you could from the beast.");
 
 		return health;
+	}
+
+	public static void displayInventoryItems(String[] inv, String item_type) {
+		if (item_type.equalsIgnoreCase("weapons")) {
+			System.out.println("\nWEAPONS: ");
+			for (int i = 0; i < inv.length; i++) 
+				if (inv[i].equalsIgnoreCase("fists") || inv[i].equalsIgnoreCase("metal pipe") ||
+					inv[i].equalsIgnoreCase("chair leg") || inv[i].equalsIgnoreCase("tennis racket") ||
+					inv[i].equalsIgnoreCase("baseball bat"))
+				System.out.println(" - " + inv[i]);
+		}
+		else if (item_type.equalsIgnoreCase("health")) {
+			System.out.println("\nHEALTH ITEMS: ");
+			for (int i = 0; i < inv.length; i++) 
+				if (inv[i].equalsIgnoreCase("almond water") || inv[i].equalsIgnoreCase("bandage") ||
+					inv[i].equalsIgnoreCase("backshroom") || inv[i].equalsIgnoreCase("health pack"))
+			System.out.println(" (+) " + inv[i]);
+		}
+	}
+
+	public static String[] updateElementsPassed(String[] element_list, String current_element) {
+		for (int i = 0; i < element_list.length; i++) {
+			if (element_list[i].equals("???")) {
+				element_list[i] = current_element;
+				break;
+			}	
+		}
+		return element_list;
+	}
+
+	public static boolean playerIsDead(int health) {
+		if (health <= 0) 
+		  	return true;
+		else 
+		  	return false;
 	}
 }
