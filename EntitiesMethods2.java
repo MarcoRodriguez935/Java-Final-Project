@@ -134,16 +134,15 @@ public class EntitiesMethods2 {
 		if (cmd.equalsIgnoreCase("fight")) {
 
 			displayInventoryItems(inventory, "weapons");
-			System.out.println("\nChoose an item:");
+			System.out.print("\nChoose an item: ");
 			weapon = chooseItem();
 
 			while (!verifyItem(inventory, weapon) || !isWeapon(weapon)) {
+				System.out.println("Cannot use weapon");
 				weapon = chooseItem();
 			}
 
-			playerFightEntity(health, weapon, current_entity);
-
-			// health = getFightOutcome(health, weapon, current_entity);
+			health = playerFightEntity(health, weapon, current_entity);
 
 		}
 		else if (cmd.equalsIgnoreCase("flee")) {
@@ -180,84 +179,6 @@ public class EntitiesMethods2 {
 		else 
 			return false;
 	}
-	
-	// public static int getFightOutcome(int health, String weapon, String current_entity) {
-
-	// 	Random rand = new Random();
-
-	// 	int health_lost = 0;
-
-	// 	// mannequin outcomes
-	// 	if (current_entity.equals("LIVING MANNEQUIN")) {
-	// 		if (weapon.equalsIgnoreCase("fists"))
-	// 			health_lost += (int)(Math.random() * (5 - 3 + 1) + 3);
-	// 		else if (weapon.equalsIgnoreCase("metal pipe") || weapon.equalsIgnoreCase("chair leg") ||
-	// 			weapon.equalsIgnoreCase("tennis racket") || weapon.equalsIgnoreCase("baseball bat"))
-	// 			health_lost += 0;
-	// 	}
-
-	// 	// smiler outcomes
-	// 	else if (current_entity.equalsIgnoreCase("SMILER")) {
-	// 		if (weapon.equalsIgnoreCase("fists") || weapon.equalsIgnoreCase("metal pipe") ||
-	// 			weapon.equalsIgnoreCase("chair leg") || weapon.equalsIgnoreCase("tennis racket") ||
-	// 			weapon.equalsIgnoreCase("baseball bat"))
-	// 			health_lost += (int)(Math.random() * (90 - 75 + 1) + 75);
-	// 	}
-
-	// 	// skin-stealer outcomes
-	// 	else if (current_entity.equalsIgnoreCase("SKIN-STEALER")) {
-	// 		if (weapon.equalsIgnoreCase("fists"))
-	// 			health_lost += (int)(Math.random() * (50 - 40 + 1) + 40);
-	// 		else if (weapon.equalsIgnoreCase("chair leg") || weapon.equalsIgnoreCase("tennis racket"))
-	// 			health_lost += (int)(Math.random() * (40 - 35 + 1) + 35);
-	// 		else if (weapon.equalsIgnoreCase("metal pipe") || weapon.equalsIgnoreCase("baseball bat"))
-	// 			health_lost += (int)(Math.random() * (25 - 20 + 1) + 20);
-	// 	}
-
-	// 	// hound outcomes
-	// 	else if (current_entity.equalsIgnoreCase("HOUND")) {
-	// 		if (weapon.equalsIgnoreCase("fists"))
-	// 			health_lost += (int)(Math.random() * (50 - 45 + 1) + 45);
-	// 		else if (weapon.equalsIgnoreCase("chair leg") || weapon.equalsIgnoreCase("tennis racket"))
-	// 			health_lost += (int)(Math.random() * (30 - 25 + 1) + 25);
-	// 		else if (weapon.equalsIgnoreCase("metal pipe") || weapon.equalsIgnoreCase("baseball bat"))
-	// 			health_lost += (int)(Math.random() * (15 - 10 + 1) + 10);
-	// 	}
-
-	// 	else if (current_entity.equalsIgnoreCase("DEATHMOTH")) {
-	// 		if (weapon.equalsIgnoreCase("fists"))
-	// 			health_lost += (int)(Math.random() * (60 - 55 + 1) + 55);
-	// 		else if (weapon.equalsIgnoreCase("chair leg") || weapon.equalsIgnoreCase("tennis racket"))
-	// 			health_lost += (int)(Math.random() * (35 - 30 + 1) + 30);
-	// 		else if (weapon.equalsIgnoreCase("metal pipe") || weapon.equalsIgnoreCase("baseball bat"))
-	// 			health_lost += (int)(Math.random() * (15 - 10 + 1) + 10);
-	// 	}
-
-	// 	System.out.println("\nHEALTH LOST: -" + health_lost + "%");
-
-	// 	health -= health_lost;
-
-	// 	if (playerIsDead(health)) {
-	// 		System.out.println("\nYou did not survive.\n");
-	// 		return health;
-	// 	}
-	// 	else {
-	// 		if (health >= 90)
-	// 			System.out.println("\nYou successfully dispatched the " + current_entity + "." +
-	// 				"\nYou may now proceed\n");
-	// 		else if (health >= 60)
-	// 			System.out.println("\nYou were able to fend off the " + current_entity + "." +
-	// 				"\nProceed with caution\n");
-	// 		else if (health >= 30)
-	// 			System.out.println("\nYou fought the " + current_entity + "." +
-	// 				"\nAlthough there was an struggle, at least you're still in one piece\n");
-	// 		else if (health >= 15)
-	// 			System.out.println("\nYou won, but you can't keep this up for much longer\n");
-	// 		else if (health > 0) 
-	// 			System.out.println("\nYou underestimated it");
-	// 	}
-	// 	return health;	
-	// } 
 	
 	public static int getFleeOutcome(int health, String current_entity) {
 		// flee outcomes
@@ -338,7 +259,7 @@ public class EntitiesMethods2 {
 		return damage;
 	}
 
-	public static void playerFightEntity(int health, String weapon, String current_entity) {
+	public static int playerFightEntity(int health, String weapon, String current_entity) {
 		Scanner input = new Scanner(System.in);
 		Random rand = new Random();
 
@@ -372,14 +293,13 @@ public class EntitiesMethods2 {
 
 			System.out.println("\n" +
 							   "> fight\n" +
-							   "> heal\n" +
 							   "> flee");
 			int enemyChance = rand.nextInt(100-1)+1;
 			int playerChance = rand.nextInt(100-1)+1;
 			String playerChoice = input.next();
 
 			if (playerChoice.equalsIgnoreCase("fight")) {
-				System.out.println("You use your " + weapon);
+				System.out.println("\nYou used your " + weapon);
 
 				if (playerChance <= 5) {
 					System.out.println("Your attack missed\n" +
@@ -396,6 +316,7 @@ public class EntitiesMethods2 {
 						System.out.println("You received critical damage from the " + current_entity);
 						health -= enemy_damage * 1.5;
 					}
+					System.out.println();
 					System.out.println(current_entity + " Health: " + enemy_health);
 					System.out.println("Player Health: " + health);
 				}
@@ -416,6 +337,7 @@ public class EntitiesMethods2 {
 						System.out.println("You received critical damage from the " + current_entity);
 						health -= enemy_damage * 1.5;
 					}
+					System.out.println();
 					System.out.println(current_entity + " Health: " + enemy_health);
 					System.out.println("Player Health: " + health);
 				}
@@ -435,6 +357,7 @@ public class EntitiesMethods2 {
 						System.out.println("You received critical damage from the " + current_entity);
 						health -= enemy_damage * 1.5;
 					}
+					System.out.println();
 					System.out.println(current_entity + " Health: " + enemy_health);
 					System.out.println("Player Health: " + health);
 				}
@@ -443,18 +366,14 @@ public class EntitiesMethods2 {
 			else if (playerChoice.equalsIgnoreCase("flee")) {
 				fleeOutcome(health, current_entity);
 			}
-
-			// else if (playerChoice.equalsIgnoreCase("heal")) {
-
-			// }
 		}
 
 		if (enemy_health <= 0) {
 			System.out.println(" ");
 			System.out.println("You have defeated the " + current_entity);
-			System.out.println("You may now proceed.");
+			System.out.println("You may now proceed.\n");
 		}
-
+		return health;
 	}
 
 	public static void fleeOutcome(int health, String current_entity) {
