@@ -202,7 +202,7 @@ public class EntitiesMethods2 {
 
 		else if (current_entity.equalsIgnoreCase("HOUND"))
 			System.out.println("\nYou walked away slowly and stayed calm until you were out of sight." + 
-				"\nAfterwards, you ran as far as you could from the beast.");
+				"\nAfterwards, you ran as far as you could from the beast.\n");
 
 		return health;
 	}
@@ -266,23 +266,23 @@ public class EntitiesMethods2 {
 		int enemy_health = 0;
 		int enemy_damage = 0;
 
-		if (current_entity.equals("LIVING MANNEQUIN")) {
+		if (current_entity.equalsIgnoreCase("LIVING MANNEQUIN")) {
 			enemy_health = 30;
 			enemy_damage = 7;
 		}
-		else if (current_entity.equals("SMILER")) {
+		else if (current_entity.equalsIgnoreCase("SMILER")) {
 			enemy_health = 80;
 			enemy_damage = 14;
 		}
-		else if (current_entity.equals("SKIN STEALER")) {
+		else if (current_entity.equalsIgnoreCase("SKIN-STEALER")) {
 			enemy_health = 65;
 			enemy_damage = 18;
 		}
-		else if (current_entity.equals("HOUND")) {
+		else if (current_entity.equalsIgnoreCase("HOUND")) {
 			enemy_health = 50;
 			enemy_damage = 23;
 		}
-		else if (current_entity.equals("DEATHMOTH")) {
+		else if (current_entity.equalsIgnoreCase("DEATHMOTH")) {
 			enemy_health = 60;
 			enemy_damage = 21;
 		}
