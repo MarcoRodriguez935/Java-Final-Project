@@ -82,7 +82,7 @@ public class EntitiesMethods2 {
 	public static void getEntityDescription(String current_entity, int entity_health, String entity_type) {
 
 		System.out.println("\nENTITY ENCOUNTERED: " + current_entity);
-		System.out.println("\nENTITY HEALTH: " + entity_health + "hp");
+		System.out.println("\nENTITY HEALTH: " + entity_health + "%");
 		System.out.println("\nENTITY TYPE: " + entity_type);
 
 		if (current_entity.equals("LIVING MANNEQUIN"))
@@ -202,7 +202,7 @@ public class EntitiesMethods2 {
 
 		else if (current_entity.equalsIgnoreCase("HOUND"))
 			System.out.println("\nYou walked away slowly and stayed calm until you were out of sight." + 
-				"\nAfterwards, you ran as far as you could from the beast.");
+				"\nAfterwards, you ran as far as you could from the beast.\n");
 
 		return health;
 	}
@@ -316,9 +316,6 @@ public class EntitiesMethods2 {
 						System.out.println("You received critical damage from the " + current_entity);
 						health -= enemy_damage * 1.5;
 					}
-					System.out.println();
-					System.out.println(current_entity + " Health: " + enemy_health);
-					System.out.println("Player Health: " + health);
 				}
 
 				else if (playerChance > 5 && playerChance <= 90) {
@@ -337,9 +334,6 @@ public class EntitiesMethods2 {
 						System.out.println("You received critical damage from the " + current_entity);
 						health -= enemy_damage * 1.5;
 					}
-					System.out.println();
-					System.out.println(current_entity + " Health: " + enemy_health);
-					System.out.println("Player Health: " + health);
 				}
 
 				else if (playerChance > 90) {
@@ -357,10 +351,16 @@ public class EntitiesMethods2 {
 						System.out.println("You received critical damage from the " + current_entity);
 						health -= enemy_damage * 1.5;
 					}
-					System.out.println();
-					System.out.println(current_entity + " Health: " + enemy_health);
-					System.out.println("Player Health: " + health);
 				}
+				if (enemy_health < 0)
+					enemy_health = 0;
+
+				if (health < 0)
+					health = 0;
+
+				System.out.println();
+				System.out.println(current_entity + " Health: " + enemy_health + "%");
+				System.out.println("Player Health: " + health + "%");
 			}
 
 			else if (playerChoice.equalsIgnoreCase("flee")) {
@@ -374,36 +374,5 @@ public class EntitiesMethods2 {
 			System.out.println("You may now proceed.\n");
 		}
 		return health;
-	}
-
-	public static void fleeOutcome(int health, String current_entity) {
-
-		if (current_entity.equals("SMILER")) {
-			System.out.println("\nWise choice\n" +
-							   "Player health: " + health);
-		}
-
-		else if (current_entity.equalsIgnoreCase("LIVING MANNEQUIN")) {
-			System.out.println("You successfully ran from the mannequin.\n" +
-							   "But remember, they are also easy to take down\n" +
-							   "Player health: " + health);
-		}
-
-		else if (current_entity.equalsIgnoreCase("SKIN-STEALER")) { 
-			System.out.println("\nRunning was a good choice. Skin-stealers are unpleasant creatures\n" +
-							   "Player health: " + health);
-		}
-
-		else if (current_entity.equalsIgnoreCase("HOUND")) {
-			System.out.println("You walked away slowly and stayed calm until you were out of sight.\n" + 
-							   "Afterwards, you ran as far as you could from the beast.\n" +
-							   "Player health: " + health);
-		}
-
-		else if (current_entity.equalsIgnoreCase("DEATHMOTH")) {
-			System.out.println("Deathmoths can fly quickly.\n" + 
-							   "It outpaced you but you were able to lose it during the struggle" +
-							   "Player health: " + health);
-		}
 	}
 }
