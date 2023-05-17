@@ -202,7 +202,7 @@ public class EntitiesMethods2 {
 
 		else if (current_entity.equalsIgnoreCase("HOUND"))
 			System.out.println("\nYou walked away slowly and stayed calm until you were out of sight." + 
-				"\nAfterwards, you ran as far as you could from the beast.\n");
+				"\nAfterwards, you ran as far as you could from the beast.");
 
 		return health;
 	}
@@ -365,6 +365,7 @@ public class EntitiesMethods2 {
 
 			else if (playerChoice.equalsIgnoreCase("flee")) {
 				fleeOutcome(health, current_entity);
+				return health;
 			}
 		}
 
@@ -374,5 +375,36 @@ public class EntitiesMethods2 {
 			System.out.println("You may now proceed.\n");
 		}
 		return health;
+	}
+
+	public static void fleeOutcome(int health, String current_entity) {
+
+		if (current_entity.equals("SMILER")) {
+			System.out.println("\nWise choice\n" +
+							   "\nPlayer Health: " + health);
+		}
+
+		else if (current_entity.equalsIgnoreCase("LIVING MANNEQUIN")) {
+			System.out.println("\nYou successfully ran from the mannequin.\n" +
+							   "But remember, they are also easy to take down\n" +
+							   "\nPlayer Health: " + health);
+		}
+
+		else if (current_entity.equalsIgnoreCase("SKIN-STEALER")) { 
+			System.out.println("\nRunning was a good choice. Skin-stealers are unpleasant creatures\n" +
+							   "\nPlayer Health: " + health);
+		}
+
+		else if (current_entity.equalsIgnoreCase("HOUND")) {
+			System.out.println("\nYou walked away slowly and stayed calm until you were out of sight.\n" + 
+							   "Afterwards, you ran as far as you could from the beast.\n" +
+							   "\nPlayer Health: " + health);
+		}
+
+		else if (current_entity.equalsIgnoreCase("DEATHMOTH")) {
+			System.out.println("\nDeathmoths can fly quickly.\n" + 
+							   "It outpaced you but you were able to lose it during the struggle\n" +
+							   "\nPlayer Health: " + health);
+		}
 	}
 }
