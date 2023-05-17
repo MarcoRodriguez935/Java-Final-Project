@@ -352,15 +352,24 @@ public class EntitiesMethods2 {
 						health -= enemy_damage * 1.5;
 					}
 				}
-				if (enemy_health < 0)
-					enemy_health = 0;
 
-				if (health < 0)
+				if (enemy_health < 0) {
+					enemy_health = 0;
+				}
+				if (health < 0) {
 					health = 0;
+				}
 
 				System.out.println();
 				System.out.println(current_entity + " Health: " + enemy_health + "%");
 				System.out.println("Player Health: " + health + "%");
+
+				if (enemy_health <= 0) {
+					break;
+				}
+				else if (health <= 0) {
+					break;
+				}
 			}
 
 			else if (playerChoice.equalsIgnoreCase("flee")) {
@@ -373,6 +382,10 @@ public class EntitiesMethods2 {
 			System.out.println(" ");
 			System.out.println("You have defeated the " + current_entity);
 			System.out.println("You may now proceed.\n");
+		}
+		else if (health <= 0) {
+			System.out.println();
+			System.out.println("The " + current_entity + " defeated you\n");
 		}
 		return health;
 	}
