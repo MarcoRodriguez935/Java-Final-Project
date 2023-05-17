@@ -26,8 +26,6 @@ public class Game{
 			searchMenu = searchMenu(world, searchMenu);
 			break;
 		}
-
-
 	}
 	public static boolean searchMenu(String[][][] world, boolean display){
 		Scanner sc = new Scanner(System.in);
@@ -138,80 +136,191 @@ public class Game{
 
 
 				world[4][posx][posy] = itemChance(world, posx, posy);
-
-
-	
 				}
 			}
 			return world;
 		}
-		public static String itemChance(String[][][] world, int posx, int posy){
+	public static String itemChance(String[][][] world, int posx, int posy){
+		Random rn = new Random();
+		
+		if(posx == 0 && posy == 0){
+			return "empty";
+		}
+		else if(posx == 0 && posy == 0){
+			return "empty";
+		}
+
+		int itemsInRoom = rn.nextInt(5);
+
+		switch(itemsInRoom){
+		case 0:
+			return "empty";
+		case 1:
+			return holdItems(1);
+		case 2:
+			return holdItems(2);
+		case 3:
+			return "empty";
+		case 4:
+			return holdItems(1);
+		}
+		return "empty";
+		}
+	public static String holdItems(int itemNum){
 		Random rn = new Random();
 		int itemCount = 0;
 		int weaponCount = 0;
 		int puzzleItemCount = 0;	
-		
 
-		int itemChance = rn.nextInt(6);
-		if(itemCount == 11){ //keep track of numofitems
-			return "empty";
+		String[] weapons = {"baseball bat", "metal pipe", "tennis racket", "chair leg"};
+		String[] health = {"almond water", "backshrooms", "bandage", "health pack"};
+		String[] puzzle = {"kirby", "sussy plush", "fat bunny"};
+
+		if(itemNum == 1){
+			int itemType = rn.nextInt(3);
+
+			//validation
+			if(itemCount == 8){
+				return "empty";
+			}
+			else if(puzzleItemCount == 3){
+				itemType = rn.nextInt(2);
+			}
+
+			if(weaponCount == 4 && puzzleItemCount == 3){
+				itemType = 0;
+			}
+
+			//choose item
+			switch(itemType){
+			case 0: 
+				weaponCount++;
+				itemCount++;
+				return (weapons[rn.nextInt(4)]);
+			case 1: 
+				itemCount++;
+				return (health[rn.nextInt(4)]);
+			case 2: 
+				itemCount++;
+				puzzleItemCount++;
+				return (puzzle[rn.nextInt(3)]);
+			}
+
 		}
-		else{
-			if(itemChance == 2 || itemChance == 5 ){ //3 in 8 chance for item
-				int itemType = rn.nextInt(3); //find item type (0 is food, 1 is weapon, 2 is puzzle)
+		else if(itemNum == 2){
+			String output = "";
 
-				while(itemType == 1 && weaponCount == 4){
-					itemType = rn.nextInt(3);
-				}
-				while(itemType == 2 && puzzleItemCount == 3){
-					itemType = rn.nextInt(3);
-				}
+			int itemType1 = rn.nextInt(3);
+			int itemType2 = rn.nextInt(2);
 
-				if(itemType == 0){
-					int food = rn.nextInt(4);
-					switch(food){
-					case 0:
-						return "almondWtr";
-					case 1:
-						return "bkShrms";
-					case 2: 
-						return "bandage";
-					case 3:
-						return "healthPk";
-					}
-					itemCount++;
-				}
-				if(itemType == 1){
-					int weapon = rn.nextInt(4);
-					switch(weapon){
-					case 0:
-						return "metalPi";
-					case 1:
-						return "baseBaBt";
-					case 2:
-						return "tennisRkt";
-					case 3: 
-						return "chairLg";
-					}
-					weaponCount++;
-					itemCount++;
-				}
-				if(itemType == 2){
-					int puzzle = rn.nextInt(3);
-					switch(puzzle){
-					case 0:
-						return "Chung";
-					case 1:
-						return "Korb";
-					case 2:
-						return "mongUs";
-					}
-					puzzleItemCount++;
-					itemCount++;
+			//validation
+			if(itemCount == 8){
+				return "empty";
+			}
+			else if(puzzleItemCount == 3){
+				itemType1 = rn.nextInt(2);
+				itemType2 = rn.nextInt(2);
+			}
+
+			if(weaponCount == 4){
+				if(puzzleItemCount == 3){
+					itemType1 = 1;
+					itemType2 = 1;
 				}
 			}
+
+			//choose item
+			switch(itemType1){
+			case 0: 
+				itemCount++;
+				itemCount++;
+				output += (weapons[rn.nextInt(4)]);
+				weaponCount++;
+				break;
+			case 1: 
+				itemCount++;
+				itemCount++;
+				output += (health[rn.nextInt(4)]);
+				break;
+			case 2: 
+				itemCount++;
+				itemCount++;
+				output += (puzzle[rn.nextInt(3)]);
+				puzzleItemCount++;
+				break;
+			}
+			switch(itemType2){
+			case 0: 
+				output += (weapons[rn.nextInt(4)]);
+				weaponCount++;
+				break;
+
+			case 1: 
+				output += (health[rn.nextInt(4)]);
+				break;
+			}	
 		}
 		return "empty";
 	}
-
 }
+
+// 	if(itemCount == 11){ //keep track of numofitems
+	// 		return "empty";
+	// 	}
+	// 	else{
+	// 		if(itemChance == 2 || itemChance == 5 ){ //3 in 8 chance for item
+	// 			int itemType = rn.nextInt(3); //find item type (0 is food, 1 is weapon, 2 is puzzle)
+
+	// 			while(itemType == 1 && weaponCount == 4){
+	// 				itemType = rn.nextInt(3);
+	// 			}
+	// 			while(itemType == 2 && puzzleItemCount == 3){
+	// 				itemType = rn.nextInt(3);
+	// 			}
+
+	// 			if(itemType == 0){
+	// 				int food = rn.nextInt(4);
+	// 				switch(food){
+	// 				case 0:
+	// 					return "almondWtr";
+	// 				case 1:
+	// 					return "bkShrms";
+	// 				case 2: 
+	// 					return "bandage";
+	// 				case 3:
+	// 					return "healthPk";
+	// 				}
+	// 				itemCount++;
+	// 			}
+	// 			if(itemType == 1){
+	// 				int weapon = rn.nextInt(4);
+	// 				switch(weapon){
+	// 				case 0:
+	// 					return "metalPi";
+	// 				case 1:
+	// 					return "baseBaBt";
+	// 				case 2:
+	// 					return "tennisRkt";
+	// 				case 3: 
+	// 					return "chairLg";
+	// 				}
+	// 				weaponCount++;
+	// 				itemCount++;
+	// 			}
+	// 			if(itemType == 2){
+	// 				int puzzle = rn.nextInt(3);
+	// 				switch(puzzle){
+	// 				case 0:
+	// 					return "Chung";
+	// 				case 1:
+	// 					return "Korb";
+	// 				case 2:
+	// 					return "mongUs";
+	// 				}
+	// 				puzzleItemCount++;
+	// 				itemCount++;
+	// 			}
+	// 		}
+	// 	}
+	// 	return "empty";
+	// }
