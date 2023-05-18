@@ -1791,6 +1791,8 @@ public class Game{
 		else if (health <= 0) {
 			System.out.println();
 			System.out.println("The " + current_entity + " defeated you\n");
+			System.out.println(holdArt(1));
+			System.exit(0);
 		}
 		return health;
 	}
