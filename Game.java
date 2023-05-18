@@ -1178,7 +1178,7 @@ public class Game{
 						"something... uncanny about this whole thing. He does not seem to be in the same state of delirium being \n"+
 						"within this place, unlike you.\n\n"+
 						"Mr. Black says nothing other than this: \n"+
-						"\"To free yourself from these rooms, you must defeat me, Jack Black in a game of black-jack.\" \n"+
+						"\"To free yourself from these rooms, you must defeat me, Jack Black in a game of blackjack.\" \n"+
 						"Seeing as you haven't found a single exit in this place, the guarantee of escape attracts you to the table \n"+
 						"in the center of the room, reluctantly complying to Mr. Black's wishes.\n";
 
@@ -2077,13 +2077,22 @@ public class Game{
 	public static void initiateBlackJack() {
 		Scanner input = new Scanner(System.in);
 
+		System.out.println(" ");
 		System.out.println(" Welcome to Black Jack");
 		System.out.println("!----------------------!");
-		System.out.println("\n");
+		System.out.print("\n");
 
 		String[] cardsArray = {".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "."};
 		String[] nmeCardsArray = {".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "."};
 
+		System.out.println(" ");
+		System.out.println("Player Cards: ");
+		for (int i = 0; i < 2; i++) {
+			cardsArray[i] = cardPile();
+			System.out.println(cardsArray[i] + " ");
+		}
+
+		System.out.println(" ");
 		System.out.println("Enemy Cards: ");
 		for (int n = 0; n < 2; n++) {
 			nmeCardsArray[n] = cardPile();
@@ -2092,6 +2101,36 @@ public class Game{
 
 		int nmeCardInArray = 2;
 		int nmeCardCount = 0;
+
+		int cardInArray = 2;
+		int playerCardCount = 0;
+
+		do {
+			System.out.println(" ");
+			playerCardCount = cardCount(cardsArray);
+			System.out.println("Player Card Count: " + playerCardCount);
+			System.out.println(" ");
+
+			System.out.print("Do you Hit or Stand?: \n" + 
+								"> ");
+
+			String playerIn = input.next();
+			System.out.println();
+			if (playerIn.equalsIgnoreCase("stand")) {
+				break;
+			}
+
+			for (int a = 0; a <= cardInArray; a++) {
+				System.out.println(playerHit(cardsArray, playerIn, cardInArray)[a] + " ");
+			}
+
+			if (playerCardCount >= 21) {
+				break;
+			}
+
+			cardInArray++;
+
+		} while (cardInArray <= 12);
 
 		do {
 			System.out.println(" ");
@@ -2116,44 +2155,6 @@ public class Game{
 			nmeCardInArray++;
 
 		} while (nmeCardInArray <= 12);
-
-		// nmeCheck21(nmeCardCount);
-
-		System.out.println(" ");
-		System.out.println("Player Cards: ");
-		for (int i = 0; i < 2; i++) {
-			cardsArray[i] = cardPile();
-			System.out.println(cardsArray[i] + " ");
-		}
-
-		int cardInArray = 2;
-		int playerCardCount = 0;
-
-		do {
-			System.out.println(" ");
-			playerCardCount = cardCount(cardsArray);
-			System.out.println("Player Card Count: " + playerCardCount);
-			System.out.println(" ");
-
-			System.out.println("> Hit\n" +
-							   "> Stand");
-
-			String playerIn = input.next();
-			if (playerIn.equalsIgnoreCase("stand")) {
-				break;
-			}
-
-			for (int a = 0; a <= cardInArray; a++) {
-				System.out.println(playerHit(cardsArray, playerIn, cardInArray)[a] + " ");
-			}
-
-			if (playerCardCount >= 21) {
-				break;
-			}
-
-			cardInArray++;
-
-		} while (cardInArray <= 12);
 
 		check21(playerCardCount, nmeCardCount);
 
@@ -2192,45 +2193,58 @@ public class Game{
 			System.out.println("\n" +
 							   "Your card count is at " + playerCardCount + "\n" +
 							   "Enemy card count is at " + nmeCardCount + "\n" + 
-							   "You win!");
+							   "You win!\n");
+								System.out.println(holdArt(2));
 		}
 		else if (playerCardCount < nmeCardCount && nmeCardCount < 21) {
 			System.out.println("\n" +
 							   "Your card count is at " + playerCardCount + "\n" +
 							   "Enemy card count is at " + nmeCardCount + "\n" + 
-							   "You lose!");
+							   "You lose!\n");
+								System.out.println(holdArt(1));
 		}
 
 		else if (playerCardCount < 21 && nmeCardCount > 21) {
 			System.out.println("\n" +
 							   "Your card count is at " + playerCardCount + "\n" +
 							   "Enemy card count is at " + nmeCardCount + "\n" + 
-							   "You win!");
+							   "You win!\n");
+								System.out.println(holdArt(2));
 		}
 
 		else if (playerCardCount > 21 && nmeCardCount < 21) {
 			System.out.println("\n" +
 							   "Your card count is at " + playerCardCount + "\n" +
 							   "Enemy card count is at " + nmeCardCount + "\n" + 
-							   "You lose!");
+							   "You lose!\n");
+								System.out.println(holdArt(1));
 		}
 
 		else if (playerCardCount > 21 && nmeCardCount > 21) {
 			System.out.println("\n" +
 							   "Your card count is at " + playerCardCount + "\n" +
 							   "Enemy card count is at " + nmeCardCount + "\n" + 
-							   "You lose!");
+							   "You lose!\n");
+								System.out.println(holdArt(1));
+		}
+
+		else if (playerCardCount == nmeCardCount && playerCardCount < 21) {
+			System.out.println("\n" +
+							   "Its a draw!\n");
+								System.out.println(holdArt(1));
 		}
 
 		else if (playerCardCount == 21) {
 			System.out.println("\n" +
 							   "21!");
+								System.out.println(holdArt(2));
 		}
 
 		else if (nmeCardCount == 21) {
 			System.out.println("\n" +
 							   "Enemy has 21!\n" +
-							   "You lose!");
+							   "You lose!\n");
+								System.out.println(holdArt(1));
 		}
 
 	}
@@ -2315,5 +2329,8 @@ public class Game{
 		return count;
 
 	}
+
+
+
 
 }
