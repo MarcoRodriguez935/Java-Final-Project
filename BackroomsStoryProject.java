@@ -672,7 +672,12 @@ public class BackroomsStoryProject {
 	  			"\nIn the end, there will be a final level in which you can either escape the backrooms or be" + 
 	  			"\nstuck there forever");
 	  	System.out.println("\n----------GAMEPLAY----------");
-	  	System.out.println("Describe the menu here");
+	  	System.out.println("The game is highly menu driven. You will be shown a layout of the rooms\n" +
+				  "and will be presented with several options");
+		System.out.println("Move: Move forward in (N/S/E/W) directions");
+		System.out.println("Search: Observe your surroundings and identify items");
+		System.out.println("Inventory: View and interact with your inventory");
+		System.out.println("Cry: Cry and hope that the backrooms will let you leave (highly unlikely but not impossible)");
 
 	  	System.exit(1);
 	}
