@@ -20,8 +20,7 @@ public class Game{
 		String[] inventory = {"FISTS", "--EMPTY--", "--EMPTY--", "--EMPTY--", "--EMPTY--"};
 		int health = 100;
 		int posx = 0, posy = 0;
-
-		
+		int i = 0;
 		//--------------------------------------------------------------------------------
 
 		//introductions
@@ -39,23 +38,19 @@ public class Game{
 							"  \t  A5 B5 C5 D5 E5\n" + 	
 							"  \t        S		");
 
-		//gameplay loop
-		// boolean boss = false;
-
-
-		
 		boolean playerMenu = true;
 		while(playerMenu){				
 			int monsterRoll = rn.nextInt(10);
 
-			if(monsterRoll == 3){
+			if(monsterRoll == 3 || monsterRoll == 7){
 				messageOrDesc("entity_encounter" + (rn.nextInt(5)));
 				health = entityEncounter(health, inventory);
 			}
 
 			if(world[0][posx][posy].equals("E5")){
 				messageOrDesc("under_desc3");
-				//initiateBlackJack();
+				initiateBlackJack();
+				System.exit(0);
 			}
 
 			System.out.print( 
@@ -73,8 +68,6 @@ public class Game{
 
 			//playerMenu
 			boolean searchMenu = false;
-
-
 			if(cmd.equalsIgnoreCase("move")){
 				boolean display = true;
 				while(display){
@@ -96,17 +89,25 @@ public class Game{
 							System.out.println("You walk into room " + playerPosition);
 
 							printRoomDesc(world, posx, posy);
-						if(world[2][posx][posy].equals("Puzzle")){
-							boolean puzzleDone = false;
-							int random1 = rn.nextInt(2);
-							int random2 = rn.nextInt(2);
-							int random3 = rn.nextInt(2);
-							puzzleDone = puzzleRoom(random1, random2, random3);				
-					
-							if(puzzleDone){
+							if(world[2][posx][posy].equals("Puzzle")){
+								switch(i){
+								case 0:
+									anagramPuzzle();
+									break;
+								case 1:
+									triviaCS();
+									break;
+								case 2:
+									triviaCalc();
+									break;
+								case 3:
+									triviaPhys();
+									break;
+								}
+
+								i++;
 								world[2][posx][posy] = "Normal";
 							}
-						}
 						else if(world[2][posx][posy].equals("Settle")){
 							settlement(inventory);
 						}
@@ -127,17 +128,25 @@ public class Game{
 							System.out.println("You walk into room " + playerPosition + "\n");
 
 							printRoomDesc(world, posx, posy);
-						if(world[2][posx][posy].equals("Puzzle")){
-							boolean puzzleDone = false;
-							int random1 = rn.nextInt(2);
-							int random2 = rn.nextInt(2);
-							int random3 = rn.nextInt(2);
-							puzzleDone = puzzleRoom(random1, random2, random3);				
-				
-							if(puzzleDone){
+							if(world[2][posx][posy].equals("Puzzle")){
+								switch(i){
+								case 0:
+									anagramPuzzle();
+									break;
+								case 1:
+									triviaCS();
+									break;
+								case 2:
+									triviaCalc();
+									break;
+								case 3:
+									triviaPhys();
+									break;
+								}
+
+								i++;
 								world[2][posx][posy] = "Normal";
 							}
-						}
 						else if(world[2][posx][posy].equals("Settle")){
 							settlement(inventory);
 						}
@@ -157,17 +166,25 @@ public class Game{
 							System.out.println("You walk into room " + playerPosition + "\n");
 
 							printRoomDesc(world, posx, posy);
-						if(world[2][posx][posy].equals("Puzzle")){
-							boolean puzzleDone = false;
-							int random1 = rn.nextInt(2);
-							int random2 = rn.nextInt(2);
-							int random3 = rn.nextInt(2);
-							puzzleDone = puzzleRoom(random1, random2, random3);				
-				
-							if(puzzleDone){
+							if(world[2][posx][posy].equals("Puzzle")){
+								switch(i){
+								case 0:
+									anagramPuzzle();
+									break;
+								case 1:
+									triviaCS();
+									break;
+								case 2:
+									triviaCalc();
+									break;
+								case 3:
+									triviaPhys();
+									break;
+								}
+
+								i++;
 								world[2][posx][posy] = "Normal";
 							}
-						}
 						else if(world[2][posx][posy].equals("Settle")){
 							settlement(inventory);
 						}
@@ -189,16 +206,24 @@ public class Game{
 
 							printRoomDesc(world, posx, posy);
 							if(world[2][posx][posy].equals("Puzzle")){
-							boolean puzzleDone = false;
-							int random1 = rn.nextInt(2);
-							int random2 = rn.nextInt(2);
-							int random3 = rn.nextInt(2);
-							puzzleDone = puzzleRoom(random1, random2, random3);				
-				
-							if(puzzleDone){
+								switch(i){
+								case 0:
+									anagramPuzzle();
+									break;
+								case 1:
+									triviaCS();
+									break;
+								case 2:
+									triviaCalc();
+									break;
+								case 3:
+									triviaPhys();
+									break;
+								}
+
+								i++;
 								world[2][posx][posy] = "Normal";
 							}
-						}
 						else if(world[2][posx][posy].equals("Settle")){
 							settlement(inventory);
 						}
@@ -273,10 +298,6 @@ public class Game{
 		else if(choice.equalsIgnoreCase("N")){
 			System.out.println("You decide to keep to yourself. \n");
 		}
-	}
-	public static boolean puzzleRoom(int r1, int r2, int r3){
-		System.out.println("Breh\n");
-		return true;
 	}
 	public static boolean searchMenu(String[][][] world, int posx, int posy, boolean display){
 		Scanner sc = new Scanner(System.in);
@@ -1128,7 +1149,7 @@ public class Game{
 
 		apt_desc[4] = "\nThere is no smell in here, but you feel much colder than before, as if a draft from a window was left open. \n"+
 					  "Scanning the room you find that there are two windows that don't show anything on the other side, and one of \n"+
-					  "these windows is cracked open, asuumedly causing the breeze.\n";
+					  "these windows is cracked open, assumedly causing the breeze.\n";
 
 		apt_desc[5] = "\nWalking into this room, you find several dumpsters lining the walls of the room, but they're not giving off \n"+
 					  "any smell. The one window that's to your right shows what seems to be some living complex.\n";
@@ -1151,7 +1172,7 @@ public class Game{
 						"make see anything that's in the room. The sounds in this room put you in a state of uneasiness that \n"+
 						"surpasses any feeling that you've felt so far in this place. \n\n"+
 						"After a minute of trying to understand where you are, the lights in the room suddenly turn on, blinding \n"+
-						"you momentarily. As your vision reestablishes itself, you're face to face to, much to your surprise, JACK BLACK!"+
+						"you momentarily. As your vision reestablishes itself, you're face to face to, much to your surprise, JACK BLACK!\n"+
 						"By far this is the most confused you've been in your life. Seeing THE actor from timeless classics such as \n"+
 						"\"Kung Fu Panda\", \"Jumanji\", \"School of Rock\" & \"Goosebumps\" is very much a surprise, however there's \n"+
 						"something... uncanny about this whole thing. He does not seem to be in the same state of delirium being \n"+
@@ -1226,15 +1247,15 @@ public class Game{
 						 "in the wall.";
 
 		String[] entity_encounter = new String[5];
-		entity_encounter[0] = "\nThe moment you step into this new room, your heart drops as you come face to face \n"+
+		entity_encounter[0] = "\nThe moment you step into this room, your heart drops as you come face to face \n"+
 							  "with some kind of... indescribable thing.\n";
-		entity_encounter[1] = "\nYou have no time to react entering this room, as suddenly an entity that towers over \n"+
+		entity_encounter[1] = "\nYou have no time to react, as suddenly an entity that towers over \n"+
 							  "you becomes aware of your presence.\n";
-		entity_encounter[2] = "\nThe room you enter feels different. The flourescent lights flicker, the air grows thinner. \n" +
+		entity_encounter[2] = "\nThis room feels different. The flourescent lights flicker, the air grows thinner. \n" +
 							  "In the dark corner of the room, a pair of eyes stares you down, ensnaring you to this room.\n";
-		entity_encounter[3] = "\nWalking into this room you feel that you're not alone. Your assumptions are proven correct, \n"+
+		entity_encounter[3] = "\nAfter a few moments in this room you feel that you're not alone. Your assumptions are proven correct, \n"+
 							  "as some kind of crawling entity shambles across the floor towards you.\n";
-		entity_encounter[4] = "\nThis new room seems to appear vacant at the moment. After a few seconds, some wretched entity \n"+
+		entity_encounter[4] = "\nThis room seems to appear vacant at the moment. After a few seconds, some wretched entity \n"+
 							  "enters the room from another doorway, letting out an ear-piercing yell.\n";
 
 		switch(message){
@@ -1561,7 +1582,7 @@ public class Game{
 	public static int fightEntity(int health, String[] inventory, String current_entity) {
 		Scanner input = new Scanner(System.in);
 
-		System.out.println("\nDo you FLEE or FIGHT?");
+		System.out.println("\nDo you Fight or Flee?");
 		System.out.print("> ");
 		String cmd = input.next();
 		cmd = cmd.trim();
@@ -1582,6 +1603,7 @@ public class Game{
 
 			while (!verifyItem(inventory, weapon) || !isWeapon(weapon)) {
 				System.out.println("Cannot use weapon");
+				System.out.print("\nChoose an item: ");
 				weapon = chooseItem();
 			}
 
@@ -1696,9 +1718,9 @@ public class Game{
 
 		while (enemy_health > 0) {
 
-			System.out.println("\n" +
-							   "> fight\n" +
-							   "> flee");
+			System.out.print("\n" +
+							   "Fight or Flee?\n" + 
+							   "> ");
 			int enemyChance = rand.nextInt(100-1)+1;
 			int playerChance = rand.nextInt(100-1)+1;
 			String playerChoice = input.next();
@@ -1758,16 +1780,22 @@ public class Game{
 					}
 				}
 
+				System.out.println();
+				System.out.println(current_entity + " Health: " + enemy_health + "%");
+				System.out.println("Player Health: " + health + "%");
+
 				if (enemy_health < 0) {
 					enemy_health = 0;
 				}
 				if (health < 0) {
 					health = 0;
+					System.out.println();
+					System.out.println("The " + current_entity + " defeated you\n");
+					System.out.println(holdArt(1));
+					System.exit(0);
 				}
 
-				System.out.println();
-				System.out.println(current_entity + " Health: " + enemy_health + "%");
-				System.out.println("Player Health: " + health + "%");
+				
 
 				if (enemy_health <= 0) {
 					break;
@@ -1845,4 +1873,447 @@ public class Game{
 
 	  	System.exit(0);
 	}
+	public static void anagramPuzzle() {
+		Scanner input = new Scanner(System.in);
+
+		boolean puzzle1 = true;
+
+		String ans = "";
+
+		System.out.println("The doors suddenly slam shut and you're faced with what looks looks like gibberish scribbled on the walls.\n" + 
+							"There seems to be a pencil on the ground next to a flat stone.\n");
+		System.out.println("You try your best to open the doors, but to no avail. It seem's you're stuck until you can figure out what the gibberish on the walls say.\n");
+		System.out.println();
+
+		while (puzzle1) {
+			System.out.print("Unscramble this word: ");
+			System.out.println("OLS GSELEAN");
+
+			System.out.print("> ");
+			ans = input.nextLine();
+			ans = ans.trim();
+
+			while (!ans.equalsIgnoreCase("los angeles")) {
+				System.out.print("> ");
+				ans = input.nextLine();
+				ans = ans.trim();
+			}
+			System.out.println("\nYou are correct");
+
+			System.out.print("Unscramble this word: ");
+			System.out.println("UMPOETRC ESECCNI");
+
+			System.out.print("> ");
+			ans = input.nextLine();
+			ans = ans.trim();
+
+			while (!ans.equalsIgnoreCase("computer science")) {
+				System.out.print("> ");
+				ans = input.nextLine();
+				ans = ans.trim();
+			}
+			System.out.println("\nYou are correct");
+
+			System.out.print("Unscramble this word: ");
+			System.out.println("YBBAOEOAB");
+
+			System.out.print("> ");
+			ans = input.nextLine();
+			ans = ans.trim();
+
+			while (!ans.equalsIgnoreCase("bababooey")) {
+				System.out.print("> ");
+				ans = input.nextLine();
+				ans = ans.trim();
+			}
+			System.out.println("\nYou are correct");
+			System.out.println("The doors burst open as you finish writing your final answer, and you breath a sigh of relief.\n");
+
+			puzzle1 = false;
+		}
+	}
+	public static void triviaCS(){
+		Scanner inp = new Scanner(System.in);
+		String trivia_q1 = "The moment you step into this room, all of the doors close quickly. Looking around this room \n"+ 
+						   "you notice something distinct. Written on the walls is what seems to be a question and a pencil \n"+
+						   "on the floor below it. \n\n"+
+						   "On the wall writes: \n\n"+ 
+						   "\"If you have a 3 dimensional array and would want to print all data in the arrays, how many \n"+
+						   "loops are required to do this?\"\n\n"+
+						   "You pick up the pencil and make the assumption that to leave this room you have to answer this \n"+
+						   "riddle by writing it on the wall.";
+		
+		boolean solved = false; 
+		int attempts = 3;
+		System.out.println(trivia_q1);
+		while(!solved){
+			System.out.print(">>>  ");
+			String ans = inp.nextLine();
+				if(!ans.equalsIgnoreCase("3")){
+					if(attempts == 3){
+					System.out.println("The walls shake when you answer and none of the doors \n" +
+								 	 "open, meaning that answer was definitely wrong.");
+					attempts--;
+					}
+					else if(attempts == 2){
+						System.out.println("Cracks in the walls now start show as the room shakes more violently "+
+										 " from your wrong answer.");
+						attempts--;
+					}
+						
+					else if(attempts == 1){
+						System.out.println("The walls lurch wildly as though they are trying to grab you and you begin to see blood drip from the ceiling.\n" + 
+											"Horrified, you try to bash through the doors, and you break your arm while trying.\n" + 
+											"Inky black hands burst through the walls, grasping at your limbs.\n" + 
+											"The walls begin to close in on you and you cry out until the only noise left is the buzzing of the lights.\n");
+
+											System.out.println(holdArt(1));
+											System.exit(0);
+
+					attempts--;
+					}
+				}
+				else{
+					System.out.println("For a few moments, nothing happens. Shortly after all the doors to the "+
+									 "room begin to open, allowing you to pass through.\n");
+					solved = true;
+				}
+		}
+		
+	}
+	public static void triviaCalc(){
+		Scanner inp = new Scanner(System.in);
+		String trivia_q2 = "The moment you step into this room, all of the doors close quickly. Looking around this room \n"+ 
+						   "you notice something distinct. Written on the walls is what seems to be a question and a pencil \n"+
+						   "on the floor below it. \n\n"+
+						   "On the wall writes: \n\n"+ 
+						   "\"Given the position equation (5t^3)+9t, what is the acceleration equation?\"\n\n"+
+						   "You pick up the pencil and make the assumption that to leave this room you have to answer this \n"+
+						   "riddle by writing it on the wall.";
+		
+
+		boolean solved = false;
+		int attempts = 3;
+		System.out.println(trivia_q2);
+		while(!solved){
+			System.out.print(">>>  ");
+			String ans = inp.nextLine();
+				if(!ans.equalsIgnoreCase("30t")){
+					if(attempts == 3){
+					System.out.println("The lights seem to dim for a second, giving you the feeling that you got the wrong answer.");
+					attempts--;
+					}
+					else if(attempts == 2){
+						System.out.println("The lights flicker quickly and pop, leaving you in complete darkness.\n" +
+											"You get the feeling you're not gonna get another chance to solve this question.");
+						attempts--;
+					}
+					else if(attempts == 1){
+						System.out.println("You hear what sounds like fingernails skittering across the floor in every direction\n" + 
+											"and you begin swing wildly in fear, trying to make it to the door, but the rooms seems to go on and on.\n" +
+											"You're suddenly pulled to the floor by hundreds of hands, and they grasp wildly at you,\n" +
+											"tearing parts of you away until only your blood and items are left on the ground.\n");
+
+											System.out.println(holdArt(1));
+											System.exit(0);
+
+					attempts--;
+					}
+				}
+				else{
+					System.out.println("For a few moments, nothing happens. Shortly after all the doors to the "+
+									 "room begin to open, allowing you to pass through.");
+					solved = true;
+				}
+		}
+	} 
+	public static void triviaPhys(){
+		Scanner inp = new Scanner(System.in);
+		String trivia_q3 = "The moment you step into this room, all of the doors close quickly. Looking around this room \n"+ 
+						   "you notice something distinct. Written on the walls is what seems to be a question and a pencil \n"+
+						   "on the floor below it. \n\n"+
+						   "On the wall writes: \n\n"+ 
+						   "\"A metal rod with a radius of 0.4 metrs spins along a rotational axis. The axis goes through the \n"+
+						   "rod's center of mass, creating a 90 degree angle with the rod. A force is applied to the rod at \n"+
+						   "one of its ends parallel to the rod. How much torque is applied to the rod?\"\n\n"+
+						   "You pick up the pencil and make the assumption that to leave this room you have to answer this \n"+
+						   "riddle by writing it on the wall.";
+		
+		boolean solved = false;
+		int attempts = 3;
+		System.out.println(trivia_q3);
+		while(!solved){
+			System.out.print(">>>  ");
+			String ans = inp.nextLine();
+			System.out.println();
+				if(!ans.equalsIgnoreCase("0") ){
+					if(attempts == 3){
+					System.out.println("You write down your answer and try the doors, but it's as if they're glued shut.\n" + 
+										"Frustrated, you sit back down and try the problem again");
+					attempts--;
+					}
+					else if(attempts == 2){
+						System.out.println("You notice that a couple of the doors seem have started to blend into the walls and you quickly get back to solving the problem");
+						attempts--;
+					}
+					else if(attempts == 1){
+						System.out.println("As you write down your final answer, you look up and realize the doors have completely disappeared.\n" + 
+											"You begin to tear at the wallpaper, punching against the walls of your tomb in desparation\n" + 
+											"You fall to your knees and sob quietly to yourself, realizing that you're completely trapped\n" + 
+											"The backrooms seem to mock your very being as you curl up and waste away.\n");
+
+											System.out.println(holdArt(1));
+											System.exit(0);
+					attempts--;
+					}
+				}
+				else{
+					System.out.println("For a few moments, nothing happens. Shortly after all the doors to the "+
+									 "room begin to open, allowing you to pass through.");
+					solved = true;
+				}
+		}
+	}
+	public static void initiateBlackJack() {
+		Scanner input = new Scanner(System.in);
+
+		System.out.println(" Welcome to Black Jack");
+		System.out.println("!----------------------!");
+		System.out.println("\n");
+
+		String[] cardsArray = {".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "."};
+		String[] nmeCardsArray = {".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "."};
+
+		System.out.println("Enemy Cards: ");
+		for (int n = 0; n < 2; n++) {
+			nmeCardsArray[n] = cardPile();
+			System.out.println(nmeCardsArray[n] + " ");
+		}
+
+		int nmeCardInArray = 2;
+		int nmeCardCount = 0;
+
+		do {
+			System.out.println(" ");
+			nmeCardCount = cardCount(nmeCardsArray);
+			System.out.println("Enemy Card Count: " + nmeCardCount);
+			System.out.println(" ");
+
+			nmeHit(nmeCardsArray, nmeCardInArray, nmeCardCount);
+
+			for (int c = 0; c <= nmeCardInArray; c++) {
+				System.out.println(nmeHit(nmeCardsArray, nmeCardInArray, nmeCardCount)[c] + " ");
+			}
+
+			if (nmeCardCount >= 17) {
+				break;
+			}
+			
+			if (nmeCardCount >= 21) {
+				break;
+			}
+
+			nmeCardInArray++;
+
+		} while (nmeCardInArray <= 12);
+
+		// nmeCheck21(nmeCardCount);
+
+		System.out.println(" ");
+		System.out.println("Player Cards: ");
+		for (int i = 0; i < 2; i++) {
+			cardsArray[i] = cardPile();
+			System.out.println(cardsArray[i] + " ");
+		}
+
+		int cardInArray = 2;
+		int playerCardCount = 0;
+
+		do {
+			System.out.println(" ");
+			playerCardCount = cardCount(cardsArray);
+			System.out.println("Player Card Count: " + playerCardCount);
+			System.out.println(" ");
+
+			System.out.println("> Hit\n" +
+							   "> Stand");
+
+			String playerIn = input.next();
+			if (playerIn.equalsIgnoreCase("stand")) {
+				break;
+			}
+
+			for (int a = 0; a <= cardInArray; a++) {
+				System.out.println(playerHit(cardsArray, playerIn, cardInArray)[a] + " ");
+			}
+
+			if (playerCardCount >= 21) {
+				break;
+			}
+
+			cardInArray++;
+
+		} while (cardInArray <= 12);
+
+		check21(playerCardCount, nmeCardCount);
+
+	}
+
+	public static String[] playerHit(String[] cardsArray, String playerIn, int cardInArray) {
+
+		if (playerIn.equalsIgnoreCase("hit")) {
+			for (int i = 0; i <= cardInArray; i++) {
+				if (cardsArray[i].contains(".")) {
+					cardsArray[i] = cardPile();
+				}
+			}
+		}
+
+		return cardsArray;
+
+	}
+
+	public static String[] nmeHit(String[] nmeCardsArray, int nmeCardInArray, int nmeCardCount) {
+
+		if (nmeCardCount < 17) {
+			for (int i = 0; i <= nmeCardInArray; i++) {
+				if (nmeCardsArray[i].contains(".")) {
+					nmeCardsArray[i] = cardPile();
+				}
+			}
+		}
+
+		return nmeCardsArray;
+	}
+
+	public static void check21(int playerCardCount, int nmeCardCount) {
+
+		if (playerCardCount > nmeCardCount && playerCardCount < 21) {
+			System.out.println("\n" +
+							   "Your card count is at " + playerCardCount + "\n" +
+							   "Enemy card count is at " + nmeCardCount + "\n" + 
+							   "You win!");
+		}
+		else if (playerCardCount < nmeCardCount && nmeCardCount < 21) {
+			System.out.println("\n" +
+							   "Your card count is at " + playerCardCount + "\n" +
+							   "Enemy card count is at " + nmeCardCount + "\n" + 
+							   "You lose!");
+		}
+
+		else if (playerCardCount < 21 && nmeCardCount > 21) {
+			System.out.println("\n" +
+							   "Your card count is at " + playerCardCount + "\n" +
+							   "Enemy card count is at " + nmeCardCount + "\n" + 
+							   "You win!");
+		}
+
+		else if (playerCardCount > 21 && nmeCardCount < 21) {
+			System.out.println("\n" +
+							   "Your card count is at " + playerCardCount + "\n" +
+							   "Enemy card count is at " + nmeCardCount + "\n" + 
+							   "You lose!");
+		}
+
+		else if (playerCardCount > 21 && nmeCardCount > 21) {
+			System.out.println("\n" +
+							   "Your card count is at " + playerCardCount + "\n" +
+							   "Enemy card count is at " + nmeCardCount + "\n" + 
+							   "You lose!");
+		}
+
+		else if (playerCardCount == 21) {
+			System.out.println("\n" +
+							   "21!");
+		}
+
+		else if (nmeCardCount == 21) {
+			System.out.println("\n" +
+							   "Enemy has 21!\n" +
+							   "You lose!");
+		}
+
+	}
+
+	public static String cardPile() {
+
+		Random randCard = new Random();
+		String result = "";
+
+		int card = randCard.nextInt(52 - 1) + 1;
+
+		String[] deckOfCards = {"Ace of Diamonds", "Ace of Hearts", "Ace of Spades", "Ace of Clubs",
+								"2 of Diamonds", "2 of Hearts", "2 of Spades", "2 of Clubs",
+								"3 of Diamonds", "3 of Hearts", "3 of Spades", "3 of Clubs",
+								"4 of Diamonds", "4 of Hearts", "4 of Spades", "4 of Clubs",
+								"5 of Diamonds", "5 of Hearts", "5 of Spades", "5 of Clubs",
+								"6 of Diamonds", "6 of Hearts", "6 of Spades", "6 of Clubs",
+								"7 of Diamonds", "7 of Hearts", "7 of Spades", "7 of Clubs",
+								"8 of Diamonds", "8 of Hearts", "8 of Spades", "8 of Clubs",
+								"9 of Diamonds", "9 of Hearts", "9 of Spades", "9 of Clubs",
+								"10 of Diamonds", "10 of Hearts", "10 of Spades", "10 of Clubs",
+								"Jack of Diamonds", "Jack of Hearts", "Jack of Spades", "Jack of Clubs",
+								"Queen of Diamonds", "Queen of Hearts", "Queen of Spades", "Queen of Clubs",
+								"King of Diamonds", "King of Hearts", "King of Spades", "King of Clubs"};
+
+		result += deckOfCards[card];
+
+		return result;
+
+	}
+
+	public static int cardCount(String[] cardsArray) {
+
+		int count = 0;
+
+		for (int i = 0; i < cardsArray.length; i++) {
+			if (cardsArray[i].contains("Ace")) {
+				count += 1;
+			}
+			else if (cardsArray[i].contains("2")) {
+				count += 2;
+			}
+			else if (cardsArray[i].contains("3")) {
+				count += 3;
+			}
+			else if (cardsArray[i].contains("4")) {
+				count += 4;
+			}
+			else if (cardsArray[i].contains("5")) {
+				count += 5;
+			}
+			else if (cardsArray[i].contains("6")) {
+				count += 6;
+			}
+			else if (cardsArray[i].contains("7")) {
+				count += 7;
+			}
+			else if (cardsArray[i].contains("8")) {
+				count += 8;
+			}
+			else if (cardsArray[i].contains("9")) {
+				count += 9;
+			}
+			else if (cardsArray[i].contains("10")) {
+				count += 10;
+			}
+			else if (cardsArray[i].contains("Jack")) {
+				count += 10;
+			}
+			else if (cardsArray[i].contains("Queen")) {
+				count += 10;
+			}
+			else if (cardsArray[i].contains("King")) {
+				count += 10;
+			}
+			else if (cardsArray[i].contains(".")) {
+				count += 0;
+			}
+
+		}
+
+		return count;
+
+	}
+
 }
