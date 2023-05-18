@@ -4,19 +4,25 @@ public class blackjack{
 		Scanner inp = new Scanner(System.in);
 
 		String s = "";
-		boolean hit = hit(s);
+		
+		boolean hit = true;
 		int p_card = 0;
 		do{
-			System.out.println("House \"Would you like to hit? (Y or N)\"");
+			System.out.println("House: \"Would you like to hit? (Y or N)\"");
 			s = inp.next();
+			hit = hit(s);
+			
 			cardGive(p_card);
-		} while(hit == true ^ p_card < 22);
+		} while(hit == true ^ p_card > 21);
 
 		int c_card = 0;
 		do{
 			cardGive(c_card);
-		} while(hit == true ^ c_card < 22);
-		System.out.print(hit);
+		} while(hit == true ^ c_card > 21);
+
+		System.out.println(p_card);
+		System.out.println(c_card);
+		//fyi it's not accumulating the score from the cards
 	}
 
 	public static void cardGive(int current_card){
@@ -63,11 +69,14 @@ public class blackjack{
 				}
 	}
 	public static boolean hit(String s){
+		
+		boolean hit = false;
 		if(s.equalsIgnoreCase("y")){
-			return true;
+			hit = true;
 		}
 		else if(s.equalsIgnoreCase("n")){
-			return false;
+			hit = false;
 		}
+		return hit;
 	}
 }
