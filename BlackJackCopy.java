@@ -1,6 +1,4 @@
-// Couldn't figure out how to make comp and player go at the same time. Comp always finishes turn, player sees the result for comp. (Not good).
 // Couldn't figure out how make value of ace adjustable.
-// This is how far my powers could go.
 
 import java.util.Scanner;
 import java.util.Random;
@@ -9,6 +7,7 @@ public class BlackJackCopy {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 
+		System.out.println(" ");
 		System.out.println(" Welcome to Black Jack");
 		System.out.println("!----------------------!");
 		System.out.println("\n");
@@ -16,6 +15,14 @@ public class BlackJackCopy {
 		String[] cardsArray = {".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "."};
 		String[] nmeCardsArray = {".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "."};
 
+		System.out.println(" ");
+		System.out.println("Player Cards: ");
+		for (int i = 0; i < 2; i++) {
+			cardsArray[i] = cardPile();
+			System.out.println(cardsArray[i] + " ");
+		}
+
+		System.out.println(" ");
 		System.out.println("Enemy Cards: ");
 		for (int n = 0; n < 2; n++) {
 			nmeCardsArray[n] = cardPile();
@@ -24,39 +31,6 @@ public class BlackJackCopy {
 
 		int nmeCardInArray = 2;
 		int nmeCardCount = 0;
-
-		do {
-			System.out.println(" ");
-			nmeCardCount = cardCount(nmeCardsArray);
-			System.out.println("Enemy Card Count: " + nmeCardCount);
-			System.out.println(" ");
-
-			nmeHit(nmeCardsArray, nmeCardInArray, nmeCardCount);
-
-			for (int c = 0; c <= nmeCardInArray; c++) {
-				System.out.println(nmeHit(nmeCardsArray, nmeCardInArray, nmeCardCount)[c] + " ");
-			}
-
-			if (nmeCardCount >= 17) {
-				break;
-			}
-			
-			if (nmeCardCount >= 21) {
-				break;
-			}
-
-			nmeCardInArray++;
-
-		} while (nmeCardInArray <= 12);
-
-		// nmeCheck21(nmeCardCount);
-
-		System.out.println(" ");
-		System.out.println("Player Cards: ");
-		for (int i = 0; i < 2; i++) {
-			cardsArray[i] = cardPile();
-			System.out.println(cardsArray[i] + " ");
-		}
 
 		int cardInArray = 2;
 		int playerCardCount = 0;
@@ -86,6 +60,30 @@ public class BlackJackCopy {
 			cardInArray++;
 
 		} while (cardInArray <= 12);
+
+		do {
+			System.out.println(" ");
+			nmeCardCount = cardCount(nmeCardsArray);
+			System.out.println("Enemy Card Count: " + nmeCardCount);
+			System.out.println(" ");
+
+			nmeHit(nmeCardsArray, nmeCardInArray, nmeCardCount);
+
+			for (int c = 0; c <= nmeCardInArray; c++) {
+				System.out.println(nmeHit(nmeCardsArray, nmeCardInArray, nmeCardCount)[c] + " ");
+			}
+
+			if (nmeCardCount >= 17) {
+				break;
+			}
+			
+			if (nmeCardCount >= 21) {
+				break;
+			}
+
+			nmeCardInArray++;
+
+		} while (nmeCardInArray <= 12);
 
 		check21(playerCardCount, nmeCardCount);
 
@@ -152,6 +150,11 @@ public class BlackJackCopy {
 							   "Your card count is at " + playerCardCount + "\n" +
 							   "Enemy card count is at " + nmeCardCount + "\n" + 
 							   "You lose!");
+		}
+
+		else if (playerCardCount == nmeCardCount && playerCardCount < 21) {
+			System.out.println("\n" +
+							   "Its a draw!");
 		}
 
 		else if (playerCardCount == 21) {
