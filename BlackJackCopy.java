@@ -18,8 +18,30 @@ public class BlackJackCopy {
 			System.out.println(nmeCardsArray[n] + " ");
 		}
 
-		System.out.println(" ");
-		System.out.println("Enemy Card Count: " + cardCount(nmeCardsArray));
+		int nmeCardInArray = 2;
+		int nmeCardCount = 0;
+
+		do {
+			System.out.println(" ");
+			nmeCardCount = cardCount(nmeCardsArray);
+			System.out.println("Enemy Card Count: " + nmeCardCount);
+			System.out.println(" ");
+
+			nmeHit(nmeCardsArray, nmeCardInArray, nmeCardCount);
+
+			for (int c = 0; c <= nmeCardInArray; c++) {
+				System.out.println(nmeHit(nmeCardsArray, nmeCardInArray, nmeCardCount)[c] + " ");
+			}
+			
+			if (nmeCardCount >= 21) {
+				break;
+			}
+
+			nmeCardInArray++;
+
+		} while (nmeCardInArray <= 12);
+
+		// nmeCheck21(nmeCardCount);
 
 		System.out.println(" ");
 		System.out.println("Player Cards: ");
@@ -29,10 +51,11 @@ public class BlackJackCopy {
 		}
 
 		int cardInArray = 2;
-		int playerCardCount = cardCount(cardsArray);
+		int playerCardCount = 0;
 
 		do {
 			System.out.println(" ");
+			playerCardCount = cardCount(cardsArray);
 			System.out.println("Player Card Count: " + playerCardCount);
 			System.out.println(" ");
 
@@ -47,7 +70,13 @@ public class BlackJackCopy {
 			for (int a = 0; a <= cardInArray; a++) {
 				System.out.println(playerHit(cardsArray, playerIn, cardInArray)[a] + " ");
 			}
+
+			if (playerCardCount >= 21) {
+				break;
+			}
+
 			cardInArray++;
+
 		} while (cardInArray <= 12);
 
 		check21(playerCardCount);
@@ -68,18 +97,34 @@ public class BlackJackCopy {
 
 	}
 
+	public static String[] nmeHit(String[] nmeCardsArray, int nmeCardInArray, int nmeCardCount) {
+
+		if (nmeCardCount < 17) {
+			for (int i = 0; i <= nmeCardInArray; i++) {
+				if (nmeCardsArray[i].contains(".")) {
+					nmeCardsArray[i] = cardPile();
+				}
+			}
+		}
+
+		return nmeCardsArray;
+	}
+
 	public static void check21(int playerCardCount) {
 
 		if (playerCardCount < 21) {
-			System.out.println("Your card count is at" + playerCardCount + "!\n" + 
+			System.out.println("\n" +
+							   "Your card count is at " + playerCardCount + "!\n" + 
 							   "You are under 21;");
 		}
 		else if (playerCardCount > 21) {
-			System.out.println("You are over 21\n" +
+			System.out.println("\n" +
+							   "You are over 21\n" +
 							   "You lose!");
 		}
 		else if (playerCardCount == 21) {
-			System.out.println("21!");
+			System.out.println("\n" +
+							   "21!");
 		}
 
 	}
