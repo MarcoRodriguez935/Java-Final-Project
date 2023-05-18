@@ -1,3 +1,7 @@
+// Couldn't figure out how to make comp and player go at the same time. Comp always finishes turn, player sees the result for comp. (Not good).
+// Couldn't figure out how make value of ace adjustable.
+// This is how far my powers could go.
+
 import java.util.Scanner;
 import java.util.Random;
 
@@ -31,6 +35,10 @@ public class BlackJackCopy {
 
 			for (int c = 0; c <= nmeCardInArray; c++) {
 				System.out.println(nmeHit(nmeCardsArray, nmeCardInArray, nmeCardCount)[c] + " ");
+			}
+
+			if (nmeCardCount >= 17) {
+				break;
 			}
 			
 			if (nmeCardCount >= 21) {
@@ -79,7 +87,7 @@ public class BlackJackCopy {
 
 		} while (cardInArray <= 12);
 
-		check21(playerCardCount);
+		check21(playerCardCount, nmeCardCount);
 
 	}
 
@@ -110,21 +118,51 @@ public class BlackJackCopy {
 		return nmeCardsArray;
 	}
 
-	public static void check21(int playerCardCount) {
+	public static void check21(int playerCardCount, int nmeCardCount) {
 
-		if (playerCardCount < 21) {
+		if (playerCardCount > nmeCardCount && playerCardCount < 21) {
 			System.out.println("\n" +
-							   "Your card count is at " + playerCardCount + "!\n" + 
-							   "You are under 21;");
+							   "Your card count is at " + playerCardCount + "\n" +
+							   "Enemy card count is at " + nmeCardCount + "\n" + 
+							   "You win!");
 		}
-		else if (playerCardCount > 21) {
+		else if (playerCardCount < nmeCardCount && nmeCardCount < 21) {
 			System.out.println("\n" +
-							   "You are over 21\n" +
+							   "Your card count is at " + playerCardCount + "\n" +
+							   "Enemy card count is at " + nmeCardCount + "\n" + 
 							   "You lose!");
 		}
+
+		else if (playerCardCount < 21 && nmeCardCount > 21) {
+			System.out.println("\n" +
+							   "Your card count is at " + playerCardCount + "\n" +
+							   "Enemy card count is at " + nmeCardCount + "\n" + 
+							   "You win!");
+		}
+
+		else if (playerCardCount > 21 && nmeCardCount < 21) {
+			System.out.println("\n" +
+							   "Your card count is at " + playerCardCount + "\n" +
+							   "Enemy card count is at " + nmeCardCount + "\n" + 
+							   "You lose!");
+		}
+
+		else if (playerCardCount > 21 && nmeCardCount > 21) {
+			System.out.println("\n" +
+							   "Your card count is at " + playerCardCount + "\n" +
+							   "Enemy card count is at " + nmeCardCount + "\n" + 
+							   "You lose!");
+		}
+
 		else if (playerCardCount == 21) {
 			System.out.println("\n" +
 							   "21!");
+		}
+
+		else if (nmeCardCount == 21) {
+			System.out.println("\n" +
+							   "Enemy has 21!\n" +
+							   "You lose!");
 		}
 
 	}
