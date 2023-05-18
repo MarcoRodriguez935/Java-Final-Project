@@ -667,21 +667,12 @@ public class BackroomsStoryProject {
 	  	    "\nOr, if you're unlucky, can take you to undesirable locations.");
 	  	System.out.println("\n----------Instructions----------");
 	  	System.out.println("This project mainly incorporates the survival aspect of the backrooms" + 
-	  			"\nYou will have to traverse through each level and fight any entities you encounter." + 
-	  			"\nThese entities may vary in difficulty and clues will be provided in their description/health" + 
-	  			"\nthat will advise whether it is best to flee or fight." +
+	  			"\nYou will have to traverse through each room and fight any entities you encounter." + 
+	  			"\nYou may also come across useful items that serve as weapons/health items." +
 	  			"\nIn the end, there will be a final level in which you can either escape the backrooms or be" + 
 	  			"\nstuck there forever");
 	  	System.out.println("\n----------GAMEPLAY----------");
-	  	System.out.println("To enter a command/action, enter the desired player action following the" + 
-	     		"\n\">\" character");
-	  	System.out.println("\nLIST OF COMMANDS:");
-	  	System.out.println("To proceed with the story: > continue");
-	  	System.out.println("To fight an entity: > fight");
-	  	System.out.println("To flee from an entity: > flee");
-	  	System.out.println("To select an item when prompted: > item_name");
-	  	System.out.println("To display the inventory: > inventory");
-	  	System.out.println("To display the command list: > cmds");
+	  	System.out.println("Describe the menu here");
 
 	  	System.exit(1);
 	}
