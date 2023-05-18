@@ -9,28 +9,79 @@ public class BlackJackCopy {
 		System.out.println("!----------------------!");
 		System.out.println("\n");
 
-		String[] cardsArray = {" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "};
-		String[] nmeCardsArray = {" ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " "};
+		String[] cardsArray = {".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "."};
+		String[] nmeCardsArray = {".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", ".", "."};
 
 		System.out.println("Enemy Cards: ");
 		for (int n = 0; n < 2; n++) {
 			nmeCardsArray[n] = cardPile();
 			System.out.println(nmeCardsArray[n] + " ");
 		}
-		System.out.println(" ");
 
+		System.out.println(" ");
+		System.out.println("Enemy Card Count: " + cardCount(nmeCardsArray));
+
+		System.out.println(" ");
 		System.out.println("Player Cards: ");
 		for (int i = 0; i < 2; i++) {
 			cardsArray[i] = cardPile();
 			System.out.println(cardsArray[i] + " ");
 		}
 
-		System.out.println("");
+		int cardInArray = 2;
+		int playerCardCount = cardCount(cardsArray);
 
-		System.out.println("Player Card Count: " + cardCount(cardsArray));
+		do {
+			System.out.println(" ");
+			System.out.println("Player Card Count: " + playerCardCount);
+			System.out.println(" ");
 
-		System.out.println("> Hit\n" +
-						   "> Stand");
+			System.out.println("> Hit\n" +
+							   "> Stand");
+
+			String playerIn = input.next();
+			if (playerIn.equalsIgnoreCase("stand")) {
+				break;
+			}
+
+			for (int a = 0; a <= cardInArray; a++) {
+				System.out.println(playerHit(cardsArray, playerIn, cardInArray)[a] + " ");
+			}
+			cardInArray++;
+		} while (cardInArray <= 12);
+
+		check21(playerCardCount);
+
+	}
+
+	public static String[] playerHit(String[] cardsArray, String playerIn, int cardInArray) {
+
+		if (playerIn.equalsIgnoreCase("hit")) {
+			for (int i = 0; i <= cardInArray; i++) {
+				if (cardsArray[i].contains(".")) {
+					cardsArray[i] = cardPile();
+				}
+			}
+		}
+
+		return cardsArray;
+
+	}
+
+	public static void check21(int playerCardCount) {
+
+		if (playerCardCount < 21) {
+			System.out.println("Your card count is at" + playerCardCount + "!\n" + 
+							   "You are under 21;");
+		}
+		else if (playerCardCount > 21) {
+			System.out.println("You are over 21\n" +
+							   "You lose!");
+		}
+		else if (playerCardCount == 21) {
+			System.out.println("21!");
+		}
+
 	}
 
 	public static String cardPile() {
@@ -104,7 +155,7 @@ public class BlackJackCopy {
 			else if (cardsArray[i].contains("King")) {
 				count += 10;
 			}
-			else if (cardsArray[i].contains("")) {
+			else if (cardsArray[i].contains(".")) {
 				count += 0;
 			}
 
@@ -113,6 +164,8 @@ public class BlackJackCopy {
 		return count;
 
 	}
+
+
 
 }
 
