@@ -13,12 +13,12 @@ public class blackjack{
 			hit = hit(s);
 			
 			cardGive(p_card);
-		} while(hit == true ^ p_card > 21);
+		} while(hit == true || p_card < 21);
 
 		int c_card = 0;
 		do{
 			cardGive(c_card);
-		} while(hit == true ^ c_card > 21);
+		} while(hit == true || c_card < 21);
 
 		System.out.println(p_card);
 		System.out.println(c_card);
